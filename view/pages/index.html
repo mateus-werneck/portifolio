@@ -1,11 +1,20 @@
 {{template "header.html" .}}
 
-<div class="py-16 flex flex-col items-center">
-    <div class="flex flex-col gap-5 text-slate-900">
-        <h1 class="text-5xl">
-        <span>Desenvolvedor de</span>
-        <span class="text-cyan-600 font-bold">software</span>
+<div class="py-16 flex flex-col items-center text-center">
+    <div id="summary-title" class="flex flex-col gap-16 md:gap-8 text-slate-900">
+
+        <h1 class="text-3xl md:text-5xl font-bold">
+        <span>Tech Lead & Desenvolvedor de</span>
+        <span class="text-cyan-600">software</span>
         </h1>
+
+        <p class="flex flex-col self-center text-lg md:text-xl text-black">
+            <span>Solução de problemas de maneira</span>
+            <span>inteligente, elegante e eficaz.</span>
+        </p>
+
+        <img src="/static/images/mf-avatar.svg" class="self-center w-[150px] md:w-[210px]"/>
+
         <a
         class="p-2 self-center text-center text-cyan-600 bg-transperent outline-none border-2 border-cyan-600 rounded-3xl w-7/12
                 hover:bg-cyan-950 hover:text-cyan-400 transition delay-75 duration-300 ease-in-out"
@@ -17,4 +26,63 @@
     </div>
 </div>
 
+ <div class="flex flex-col" id="summary-desc">
+     <div class="w-full flex flex-col items-center justify-center p-32 gap-6 md:gap-8 bg-cyan-900 text-white" id="summary-text">
+        <h1 class="text-white text-2xl font-bold">Olá, meu nome é Mateus. É um prazer recebé-lo aqui</h1>
+        <p class="text-lg text-center break-words leading-6">
+            Desde o início da minha carreira como desenvolvedor de software
+            sempre fui apaixonado por descobrir e criar ferramentas novas.
+        </p>
+    </div>
+
+    <div class="flex flex-col md:flex-row p-4 mt-[-2.75rem] border-2 border-slate-200 self-center justify-center gap-8 text-center bg-white rounded-xl">
+        <div class="flex flex-col p-4 gap-6 md:gap-8 items-center border-b-2 md:border-b-0 md:border-r-2 border-slate-100">
+            <img src="/static/images/terminal.svg" class="w-16"/>
+            <h1 class="text-black font-bold text-xl">Tech Lead</h1>
+            <span>Trabalho em equipe e dedicaçao são essenciais.</span>
+
+            <div class="flex flex-col gap-2">
+                <strong class="text-cyan-600">Metodologias:</strong>
+                <span>Metodologia Ágil</span>
+                <span>Scrum</span>
+                <span>Sprint</span>
+                <span>Feedbacks</span>
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <strong class="text-cyan-600">Competências:</strong>
+                <span>Planejamento</span>
+                <span>Pesquisa</span>
+                <span>System Design</span>
+                <span>Troubleshooting</span>
+            </div>
+
+        </div>
+         <div class="flex flex-col p-4 gap-6 items-center">
+            <img src="/static/images/gear.svg" class="w-16" />
+            <h1 class="text-black font-bold text-xl">Backend Developer</h1>
+            <span>Problemas complexos exigem soluções simples.</span>
+
+            <div class="flex flex-col gap-2">
+                <strong class="text-cyan-600">Linguagens:</strong>
+                <span>PHP, Python, GO, Javascript, HTML, CSS</span>
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <strong class="text-cyan-600">Frameworks:</strong>
+                <span>Laravel</span>
+                <span>NextJS</span>
+                <span>Gin Web Framework</span>
+            </div>
+             <div class="flex flex-col gap-2">
+                <strong class="text-cyan-600">Ferramentas:</strong>
+                <span>Gitlab</span>
+                <span>VS Code</span>
+                <span>NeoVim</span>
+                <span>Tailwind CSS</span>
+                <span>HTMX</span>
+            </div>
+        </div>
+    </div>
+</div>
 {{template "footer.html" . }}
