@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Title }}</title>
+    <script src="https://unpkg.com/htmx.org@2.0.0"
+        integrity="sha384-wS5l5IKJBvK6sPTKa2WZ1js3d947pvWXbPJ1OmWfEuxLgeHcEbjUUA5i9V5ZkpCw"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/htmx-ext-response-targets@2.0.0/response-targets.js"></script>
+    <script src="https://unpkg.com/htmx.org/dist/ext/json-enc.js"></script>
+    <script src="https://unpkg.com/htmx-ext-json-enc@2.0.1/json-enc.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="/static/css/tailwind.css" rel="stylesheet" />
+</head>
+
+<body id="body" class="flex flex-col justify-evenly bg-slate-200 text-slate-800">
+
+    <div id="header" class="h-24 flex flex-col justify-between bg-white">
+        <nav id="navbar"
+            class="w-11/12 flex absolute items-start self-center gap-12 z-10 py-8 px-2 rounded-2xl bg-white text-white">
+            <a id="home" href="/" class="text-black">Início</a>
+            <a id="about" href="/about" class="text-black">Sobre</a>
+            <a id="endorsement" href="/endorsement" class="text-black">Recomendações</a>
+            <a id="projects" href="/projects" class="text-black">Projetos</a>
+            <a id="courses" href="/courses" class="text-black">Cursos</a>
+            <a id="contact" href="/contact" class="text-black">Contato</a>
+            <a id="career" href="/career" class="text-black">Experiência Profissional</a>
+        </nav>
+    </div>
+
+    <main id="root" class="flex flex-col flex-grow p-4 md:mb-8 md:ml-4 min-h-screen">
+
+    </main>
+    <footer id="footer" class="w-full flex flex-col items-center justify-center gap-8 bg-black text-white p-12">
+        Desenvolvido por Mateus Werneck
+        © 2024 Todos os direitos reservados
+    </footer>
+</body>
+
+</html>
