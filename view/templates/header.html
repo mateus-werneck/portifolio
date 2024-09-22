@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{.Title}}</title>
+    <link rel="icon" type="image/x-icon" href="/static/images/favicon-32.png">
     <script src="https://unpkg.com/htmx.org@2.0.0"
         integrity="sha384-wS5l5IKJBvK6sPTKa2WZ1js3d947pvWXbPJ1OmWfEuxLgeHcEbjUUA5i9V5ZkpCw"
         crossorigin="anonymous"></script>
@@ -15,5 +16,19 @@
     <link href="/static/css/tailwind.css" rel="stylesheet" />
 </head>
 
-<body id="body" class="flex flex-col justify-evenly bg-slate-900 text-slate-800">
+<body id="body" class="flex flex-col justify-evenly bg-white text-slate-800">
     <main id="root" class="flex flex-col flex-grow p-4 md:mb-8 md:ml-4 min-h-screen">
+    <nav class="flex">
+        <a href="/" class="flex-grow">
+            <img src="/static/images/favicon-32.png"/>
+        </a>
+         <a
+            class="p-2 self-center text-center text-cyan-600 bg-transperent outline-none border-2 border-cyan-600 rounded-3xl w-1/12
+                hover:bg-cyan-950 hover:text-cyan-400 transition delay-75 duration-300 ease-in-out"
+            href="/contact"
+        >
+            Fale Comigo
+        </a>
+
+    </nav>
+

@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-    content: ["./view/**/*.tmpl"],
+    content: ["./view/**/*.html"],
     theme: {
         extend: {
             flex: {

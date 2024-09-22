@@ -15,10 +15,10 @@ func main() {
 	server.Static("/static", "./static")
 
 	server.GET("/", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "index.tmpl", gin.H{"Title": "Mateus Werneck"})
+		c.HTML(http.StatusOK, "index.html", gin.H{"Title": "Mateus Werneck"})
 	})
 	server.GET("/about", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "about.tmpl", gin.H{"Title": "Sobre - Mateus Werneck", "Age": 26})
+		c.HTML(http.StatusOK, "about.html", gin.H{"Title": "Sobre | Mateus Werneck", "Age": 26})
 	})
 
 	if err := server.Run(":9010"); err != nil {
