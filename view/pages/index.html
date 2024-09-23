@@ -5,7 +5,7 @@
 
         <h1 class="text-3xl md:text-5xl font-bold">
         <span>Tech Lead & Desenvolvedor de</span>
-        <span class="text-cyan-600">software</span>
+        <span class="text-teal-600">software</span>
         </h1>
 
         <p class="flex flex-col self-center text-lg md:text-xl text-black">
@@ -16,8 +16,8 @@
         <img src="/static/images/mf-avatar.svg" class="self-center w-[150px] md:w-[210px]"/>
 
         <a
-        class="p-2 self-center text-center text-cyan-600 bg-transperent outline-none border-2 border-cyan-600 rounded-3xl w-7/12
-                hover:bg-cyan-950 hover:text-cyan-400 transition delay-75 duration-300 ease-in-out"
+        class="p-2 self-center text-center text-teal-600 font-normal bg-transperent outline-none border-2 border-teal-600 rounded-3xl w-7/12
+                hover:bg-teal-600 hover:text-white transition delay-75 duration-300 ease-in-out"
         href="/static/files/Mateus Werneck.pdf"
         download
         >
@@ -27,8 +27,8 @@
 </div>
 
  <div class="flex flex-col" id="summary-desc">
-     <div class="w-full flex flex-col items-center justify-center p-32 gap-6 md:gap-8 bg-cyan-900 text-white" id="summary-text">
-        <h1 class="text-white text-2xl font-bold">Olá, meu nome é Mateus. É um prazer recebé-lo aqui</h1>
+     <div class="w-full flex flex-col items-center justify-center p-32 gap-6 md:gap-8 bg-teal-600 text-white" id="summary-text">
+        <h1 class="text-white text-2xl font-bold">Olá, meu nome é Mateus. É um prazer recebé-lo aqui.</h1>
         <p class="text-lg text-center break-words leading-6">
             Desde o início da minha carreira como desenvolvedor de software
             sempre fui apaixonado por descobrir e criar ferramentas novas.
@@ -38,49 +38,70 @@
     <div class="flex flex-col md:flex-row p-4 mt-[-2.75rem] border-2 border-slate-200 self-center justify-center gap-8 text-center bg-white rounded-xl">
         <div class="flex flex-col p-4 gap-6 md:gap-8 items-center border-b-2 md:border-b-0 md:border-r-2 border-slate-100">
             <img src="/static/images/terminal.svg" class="w-16"/>
-            <h1 class="text-black font-bold text-xl">Tech Lead</h1>
-            <span>Trabalho em equipe e dedicaçao são essenciais.</span>
+            <h1 class="text-blue-950 font-bold text-xl">Tech Lead</h1>
+            <span class="text-blue-950">Trabalho em equipe e dedicaçao são essenciais.</span>
 
             <div class="flex flex-col gap-2">
-                <strong class="text-cyan-600">Metodologias:</strong>
-                <span>Metodologia Ágil</span>
+                <strong class="text-emerald-600">Ferramentas:</strong>
+                <span>Jira</span>
+                <span>Miro</span>
+                <span>Slack</span>
                 <span>Scrum</span>
                 <span>Sprint</span>
                 <span>Feedbacks</span>
             </div>
 
             <div class="flex flex-col gap-2">
-                <strong class="text-cyan-600">Competências:</strong>
+                <strong class="text-emerald-600">Competências:</strong>
                 <span>Planejamento</span>
-                <span>Pesquisa</span>
+                <span>Comunicação</span>
+                <span>Gestão de Pessoas</span>
                 <span>System Design</span>
                 <span>Troubleshooting</span>
             </div>
 
         </div>
-         <div class="flex flex-col p-4 gap-6 items-center">
+         <div class="flex flex-col p-4 gap-6 md:gap-8 items-center">
             <img src="/static/images/gear.svg" class="w-16" />
-            <h1 class="text-black font-bold text-xl">Backend Developer</h1>
-            <span>Problemas complexos exigem soluções simples.</span>
+            <h1 class="text-blue-950 font-bold text-xl">Backend Developer</h1>
+            <span class="text-blue-950">Problemas complexos exigem soluções simples.</span>
 
-            <div class="flex flex-col gap-2">
-                <strong class="text-cyan-600">Linguagens:</strong>
-                <span>PHP, Python, GO, Javascript, HTML, CSS</span>
+            <div class="flex flex-col gap-4 items-center pb-2">
+                <strong class="text-emerald-600 pb-4">Linguagens:</strong>
+
+                <div class="flex gap-4 items-center">
+                    <img src="/static/images/golang.svg" alt="golang" class="w-8"/>
+                    <img src="/static/images/php.svg" alt="php"  class="w-12"/>
+                    <img src="/static/images/python.svg" alt="python" class="w-8"/>
+                    <img src="/static/images/javascript.svg" alt="javascript" class="w-8"/>
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-3 items-center">
+                <strong class="text-emerald-600 pb-2">Frameworks:</strong>
+
+                <div class="flex gap-4 items-center">
+                    <img src="/static/images/laravel.svg" alt="laravel" class="w-8"/>
+                    <img src="/static/images/nextjs.svg" alt="nextjs" class="w-8"/>
+                    <img src="/static/images/nodejs.svg" alt="nodejs" class="w-8"/>
+                    <img src="/static/images/serverless.svg" alt="serverless" class="w-8"/>
+                    <img src="/static/images/gin.png" alt="gin-gonic" class="w-10"/>
+                </div>
             </div>
 
             <div class="flex flex-col gap-2">
-                <strong class="text-cyan-600">Frameworks:</strong>
-                <span>Laravel</span>
-                <span>NextJS</span>
-                <span>Gin Web Framework</span>
-            </div>
-             <div class="flex flex-col gap-2">
-                <strong class="text-cyan-600">Ferramentas:</strong>
-                <span>Gitlab</span>
-                <span>VS Code</span>
-                <span>NeoVim</span>
-                <span>Tailwind CSS</span>
-                <span>HTMX</span>
+                <strong class="text-emerald-600 pb-4">Ferramentas:</strong>
+
+                <div class="grid grid-cols-4 gap-6">
+                    <img src="/static/images/aws.svg" alt="aws" class="w-8"/>
+                    <img src="/static/images/docker.svg" alt="docker"  class="w-8"/>
+                    <img src="/static/images/gitlab.svg" alt="gitlab" class="w-8"/>
+                    <img src="/static/images/postman.svg" alt="postman" class="w-8"/>
+                    <img src="/static/images/vscode.svg" alt="vscode" class="w-8"/>
+                    <img src="/static/images/neovim.svg" alt="neovim" class="w-8"/>
+                    <img src="/static/images/htmx.png" alt="neovim" class="w-8"/>
+                    <img src="/static/images/tailwind.svg" alt="tailwind" class="w-8"/>
+                </div>
             </div>
         </div>
     </div>
