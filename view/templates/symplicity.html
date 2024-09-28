@@ -1,0 +1,28 @@
+<script>
+    function changeSimplicityOpacity() {
+        var target = document.getElementById("symplicity-animation")
+
+        if (target != null) {
+            target.style.background = 'rgb(27 37 94 / 1)';
+            return
+        }
+
+        var target = document.getElementById("symplicity-logo")
+
+        if (target == null) {
+            return
+        }
+
+        if (target.style.opacity == 0) {
+            target.style.opacity = 1;
+        }
+
+    }
+</script>
+
+
+<div id="symplicity" hx-on:htmx-after-settle="changeSimplicityOpacity()">
+
+    {{ template "symplicity-logo.html" . }}
+
+</div>
