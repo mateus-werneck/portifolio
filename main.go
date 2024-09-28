@@ -15,10 +15,15 @@ func main() {
 	server.Static("/static", "./static")
 
 	server.GET("/", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "index.html", gin.H{"Title": "Mateus Werneck"})
+		c.HTML(http.StatusOK, "index.html", gin.H{"Title": "Mateus Werneck", "CelcoinOpacity": "opacity-100"})
 	})
-	server.GET("/about", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "about.html", gin.H{"Title": "Sobre | Mateus Werneck", "Age": 26})
+
+	server.GET("/recent-work/celcoin/logo", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "celcoin-logo.html", gin.H{"CelcoinOpacity": "opacity-0"})
+	})
+
+	server.GET("/recent-work/celcoin/animation", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "celcoin-animation.html", nil)
 	})
 
 	if err := server.Run(":9010"); err != nil {
