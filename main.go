@@ -7,6 +7,28 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+type RecentWork struct {
+	Element     string
+	Image       string
+	Description string
+	Opacity     string
+}
+
+var works = map[string]RecentWork{
+	"celcoin": {
+		Element:     "celcoin",
+		Image:       "celcoin.svg",
+		Description: "Infratech financeira para potencializar negócios",
+		Opacity:     "opacity-100",
+	},
+	"symplicity": {
+		Element:     "symplicity",
+		Image:       "symplicity.webp",
+		Description: "Streamline system-wide opportunities and increase student engagement",
+		Opacity:     "opacity-100",
+	},
+}
+
 func main() {
 	server := gin.Default()
 	server.Use(gin.Recovery())
@@ -16,26 +38,23 @@ func main() {
 
 	server.GET("/", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.html", gin.H{
-			"Title":             "Mateus Werneck",
-			"CelcoinOpacity":    "opacity-100",
-			"SymplicityOpacity": "opacity-100",
+			"Title":      "Mateus Werneck",
+			"RecentWork": works,
 		})
 	})
 
-	server.GET("/recent-work/celcoin/logo", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "celcoin-logo.html", gin.H{"CelcoinOpacity": "opacity-0"})
+	server.GET("/recent-work/logo/:name", func(c *gin.Context) {
+		work := works[c.Param("name")]
+		c.HTML(http.StatusOK, "logo.html", gin.H{"Opacity": "opacity-0", "Element": c.Param("name"), "Image": work.Image})
 	})
 
-	server.GET("/recent-work/celcoin/animation", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "celcoin-animation.html", nil)
-	})
+	server.GET("/recent-work/summary/:name", func(c *gin.Context) {
+		work := works[c.Param("name")]
 
-	server.GET("/recent-work/symplicity/logo", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "symplicity-logo.html", gin.H{"SymplicityOpacity": "opacity-0"})
-	})
-
-	server.GET("/recent-work/symplicity/animation", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "symplicity-animation.html", nil)
+		c.HTML(http.StatusOK, "logo-summary.html", gin.H{
+			"Element":     c.Param("name"),
+			"Description": work.Description,
+		})
 	})
 
 	if err := server.Run(":9010"); err != nil {

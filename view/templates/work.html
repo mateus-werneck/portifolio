@@ -1,13 +1,13 @@
 <script>
-    function changeCelcoinOpacity() {
-        var target = document.getElementById("celcoin-animation")
+    function changeOpacity(element) {
+        var target = document.getElementById(`${element}-animation`)
 
         if (target != null) {
             target.style.background = 'rgb(27 37 94 / 1)';
             return
         }
 
-        var target = document.getElementById("celcoin-logo")
+        var target = document.getElementById(`${element}-logo`)
 
         if (target == null) {
             return
@@ -21,8 +21,8 @@
 </script>
 
 
-<div id="celcoin" hx-on:htmx-after-settle="changeCelcoinOpacity()">
+<div id="{{.Element}}" hx-on:htmx-after-settle="changeOpacity('{{.Element}}')">
 
-    {{ template "celcoin-logo.html" . }}
+    {{ template "logo.html" . }}
 
 </div>

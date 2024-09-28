@@ -1,7 +1,8 @@
-<div id="celcoin-animation"
+<div id="{{.Element}}-animation"
     class="flex flex-col gap-8 w-96 h-64 rounded-xl p-8 justify-center items-center transition ease-in duration-200 bg-purple-100"
-    hx-trigger="click, mouseleave once" hx-swap="innerHTML" hx-target="#celcoin" hx-get="/recent-work/celcoin/logo">
-    <p class="text-white text-lg font-bold">Infratech financeira para potencializar negócios</p>
+    hx-trigger="click, mouseleave once" hx-swap="innerHTML" hx-target="#{{.Element}}"
+    hx-get="/recent-work/logo/{{.Element}}">
+    <p class="text-white text-lg font-bold">{{.Description}}</p>
     <a class="flex gap-2 items-center text-center text-white py-2 px-8 rounded-3xl border-solid border-4 border-violet-400 hover:bg-violet-400"
         href="https://celcoin.com.br/" target="_blank">
         <span>Visitar site</span>
