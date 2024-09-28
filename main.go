@@ -11,6 +11,7 @@ type RecentWork struct {
 	Element     string
 	Image       string
 	Description string
+	Website     string
 	Opacity     string
 }
 
@@ -19,12 +20,14 @@ var works = map[string]RecentWork{
 		Element:     "celcoin",
 		Image:       "celcoin.svg",
 		Description: "Infratech financeira para potencializar negócios",
+		Website:     "https://www.celcoin.com.br",
 		Opacity:     "opacity-100",
 	},
 	"symplicity": {
 		Element:     "symplicity",
 		Image:       "symplicity.webp",
 		Description: "Streamline system-wide opportunities and increase student engagement",
+		Website:     "https://www.symplicity.com",
 		Opacity:     "opacity-100",
 	},
 }
@@ -45,16 +48,13 @@ func main() {
 
 	server.GET("/recent-work/logo/:name", func(c *gin.Context) {
 		work := works[c.Param("name")]
-		c.HTML(http.StatusOK, "logo.html", gin.H{"Opacity": "opacity-0", "Element": c.Param("name"), "Image": work.Image})
+		work.Opacity = "opacity-0"
+		c.HTML(http.StatusOK, "logo.html", work)
 	})
 
 	server.GET("/recent-work/summary/:name", func(c *gin.Context) {
 		work := works[c.Param("name")]
-
-		c.HTML(http.StatusOK, "logo-summary.html", gin.H{
-			"Element":     c.Param("name"),
-			"Description": work.Description,
-		})
+		c.HTML(http.StatusOK, "logo-summary.html", work)
 	})
 
 	if err := server.Run(":9010"); err != nil {
