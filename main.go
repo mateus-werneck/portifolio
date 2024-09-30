@@ -38,9 +38,9 @@ var works = map[string]RecentWork{
 }
 
 type ContactEmail struct {
-	Name   string `form:"name"`
-	Sender string `form:"email"`
-	Body   string `form:"message"`
+	Name   string `form:"name" binding:"required,min=3,alpha"`
+	Sender string `form:"email" binding:"required,email"`
+	Body   string `form:"message" binding:"required,min=10,max=400"`
 }
 
 func main() {
@@ -68,7 +68,9 @@ func main() {
 
 		err := c.ShouldBind(&formData)
 		if err != nil {
-			c.HTML(http.StatusBadRequest, "contact-form.html", gin.H{})
+			c.HTML(http.StatusBadRequest, "form-error.html", gin.H{
+				"error": err.Error(),
+			})
 			return
 		}
 
