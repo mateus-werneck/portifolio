@@ -1,22 +1,19 @@
 <div id="form-error" class="flex gap-2 min-h-8 bg-slate-50 drop-shadow-md">
     <span class="flex-none w-2 bg-red-400 rounded-md"></span>
 
-    <img src="/static/images/cancel.svg" width="30" height="30">
+    <img src="/static/images/cancel.svg" width="30" height="30" />
 
     <div class="flex flex-col flex-1 gap-1 px-1 py-2">
         <span class="font-bold text-slate-800 text-sm">Error</span>
-        <span class="text-xs text-slate-500">
-            {{.error}}
-        </span>
+        <span class="text-xs text-slate-500"> {{.error}} </span>
     </div>
 
     <div class="cursor-pointer flex justify-center text-center items-center">
         <button
             class="text-sm text-slate-300 p-2 border-l-2 border-slate-200 hover:border-slate-500 hover:text-slate-500"
-            hx-on:click="htmx.swap('#form-error', '<div id=form-error></div>', {swapStyle: 'outerHTML'})">
+            hx-on:click="htmx.swap('#form-error', '<div id=form-error></div>', {swapStyle: 'outerHTML'})"
+        >
             Fechar
         </button>
     </div>
-
-
 </div>

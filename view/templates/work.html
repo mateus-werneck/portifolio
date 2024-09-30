@@ -1,28 +1,24 @@
 <script>
     function changeOpacity(element) {
-        var target = document.getElementById(`${element}-animation`)
+        var target = document.getElementById(`${element}-animation`);
 
         if (target != null) {
-            target.style.background = 'rgb(27 37 94 / 1)';
-            return
+            target.style.background = "rgb(27 37 94 / 1)";
+            return;
         }
 
-        var target = document.getElementById(`${element}-logo`)
+        var target = document.getElementById(`${element}-logo`);
 
         if (target == null) {
-            return
+            return;
         }
 
         if (target.style.opacity == 0) {
             target.style.opacity = 1;
         }
-
     }
 </script>
 
-
 <div id="{{.Element}}" hx-on:htmx-after-settle="changeOpacity('{{.Element}}')">
-
     {{ template "logo.html" . }}
-
 </div>

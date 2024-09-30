@@ -1,6 +1,10 @@
-<div id="{{.Element}}-logo"
+<div
+    id="{{.Element}}-logo"
     class="flex w-96 h-64 rounded-xl p-8 items-center bg-purple-100 transition duration-300 ease-in {{.Opacity}}"
-    hx-trigger="click, mouseenter once" hx-swap="innerHTML" hx-target="#{{.Element}}"
-    hx-get="/recent-work/summary/{{.Element}}">
+    hx-trigger="click, mouseenter once"
+    hx-swap="innerHTML"
+    hx-target="#{{.Element}}"
+    hx-get="/recent-work/summary/{{.Element}}"
+>
     <img alt="{{.Element}}" src="/static/images/{{.Image}}" class="w-90" />
 </div>
