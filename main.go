@@ -9,6 +9,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-mail/mail"
+	"github.com/go-playground/validator/v10"
 	"github.com/joho/godotenv"
 )
 
@@ -67,9 +68,11 @@ func main() {
 		var formData ContactEmail
 
 		err := c.ShouldBind(&formData)
-		if err != nil {
-			c.HTML(http.StatusBadRequest, "form-error.html", gin.H{
-				"error": err.Error(),
+		validationErrors := err.(validator.ValidationErrors)
+
+		if len(validationErrors) > 0 {
+			c.HTML(http.StatusBadRequest, "contact-form.html", gin.H{
+				"errors": validationErrors,
 			})
 			return
 		}

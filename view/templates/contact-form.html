@@ -1,8 +1,16 @@
 <form id="contact-form" type="submit" class="p-8 flex flex-col gap-4" hx-post="/contact" hx-target-error="#any-errors"
     hx-ext="response-targets">
     <div class="flex flex-col md:flex md:flex-row pb-4 gap-2">
-        <input required class="w-full h-12 md:h-16 indent-2 outline-none bg-slate-100" type="text" id="name" name="name"
-            placeholder="Nome" pattern="^[a-zA-Z\s]*$" />
+        <div class="flex flex-col w-full">
+            <input required class="w-full h-12 md:h-16 indent-2 outline-none bg-slate-100" type="text" id="name"
+                name="name" placeholder="Nome" pattern="^[a-zA-Z\s]*$" />
+
+            {{if .errors}}
+            <span id="name-error" class="text-red-500">{{index .errors 0}}</span>
+            {{end}}
+
+        </div>
+
         <input required class="w-full h-12 md:h-16 indent-2 outline-none bg-slate-100" type="email" id="email"
             name="email" placeholder="Email" />
     </div>
