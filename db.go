@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"log"
+	"os"
 
 	"github.com/redis/go-redis/v9"
 )
@@ -10,7 +11,7 @@ import (
 func NewRedis() *redis.Client {
 	rdb := redis.NewClient(&redis.Options{
 		Addr:     "localhost:6379",
-		Password: "", //os.Getenv("REDIS_PASSWORD"),
+		Password: os.Getenv("REDIS_PASSWORD"),
 		DB:       0,
 	})
 
