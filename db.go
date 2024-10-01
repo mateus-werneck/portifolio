@@ -14,8 +14,6 @@ func NewRedis() *redis.Client {
 		DB:       0,
 	})
 
-	return rdb
-
 	err := rdb.Conn().Ping(context.Background()).Err()
 
 	if err != nil {
