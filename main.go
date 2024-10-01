@@ -1,16 +1,19 @@
 package main
 
 import (
+	"errors"
 	"log"
 	"log/slog"
 	"net/http"
 	"os"
 	"strconv"
+	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-mail/mail"
 	"github.com/go-playground/validator/v10"
 	"github.com/joho/godotenv"
+	"github.com/redis/go-redis/v9"
 )
 
 type RecentWork struct {
@@ -46,6 +49,7 @@ type ContactEmail struct {
 
 func main() {
 	godotenv.Load()
+	rdb := NewRedis()
 
 	server := gin.Default()
 	server.Use(gin.Recovery())
@@ -64,15 +68,47 @@ func main() {
 		c.HTML(http.StatusOK, "contact.html", gin.H{})
 	})
 
+	server.GET("/recent-work/logo/:name", func(c *gin.Context) {
+		work := works[c.Param("name")]
+		work.Opacity = "opacity-0"
+		c.HTML(http.StatusOK, "logo.html", work)
+	})
+
+	server.GET("/recent-work/summary/:name", func(c *gin.Context) {
+		work := works[c.Param("name")]
+		c.HTML(http.StatusOK, "logo-summary.html", work)
+	})
+
 	server.POST("/contact", func(c *gin.Context) {
+		var validationErrors validator.ValidationErrors
 		var formData ContactEmail
 
 		err := c.ShouldBind(&formData)
-		validationErrors := err.(validator.ValidationErrors)
+
+		if err != nil {
+			validationErrors = err.(validator.ValidationErrors)
+		}
 
 		if len(validationErrors) > 0 {
 			c.HTML(http.StatusBadRequest, "contact-form.html", gin.H{
 				"errors": validationErrors,
+			})
+			return
+		}
+
+		sentEmails, err := rdb.Get(c, formData.Sender).Int()
+
+		if errors.Is(err, redis.Nil) {
+			rdb.Set(c, formData.Sender, sentEmails+1, time.Duration(time.Second*86400))
+		}
+
+		if err != nil && !errors.Is(err, redis.Nil) {
+			slog.Error("Failed to find sender on redis", "sender", formData.Sender, "error", err.Error())
+		}
+
+		if sentEmails >= 10 {
+			c.HTML(http.StatusBadRequest, "contact-.html", gin.H{
+				"errors": []string{"Limite de emails atingido."},
 			})
 			return
 		}
@@ -94,17 +130,6 @@ func main() {
 		}
 
 		c.HTML(http.StatusOK, "contact-form.html", gin.H{})
-	})
-
-	server.GET("/recent-work/logo/:name", func(c *gin.Context) {
-		work := works[c.Param("name")]
-		work.Opacity = "opacity-0"
-		c.HTML(http.StatusOK, "logo.html", work)
-	})
-
-	server.GET("/recent-work/summary/:name", func(c *gin.Context) {
-		work := works[c.Param("name")]
-		c.HTML(http.StatusOK, "logo-summary.html", work)
 	})
 
 	if err := server.Run(":9010"); err != nil {
