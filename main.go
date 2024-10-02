@@ -20,21 +20,18 @@ import (
 	"github.com/joho/godotenv"
 	"github.com/mateus-werneck/portifolio/app/storage"
 	"github.com/mateus-werneck/portifolio/app/types"
+	"github.com/nicksnyder/go-i18n/v2/i18n"
 	"github.com/redis/go-redis/v9"
+	"golang.org/x/text/language"
 )
 
 func main() {
 	godotenv.Load()
 	rdb := storage.NewRedis()
 
-	pt := pt.New()
-	en := en.New()
-	uni := ut.New(pt, pt, en)
-	trans, _ := uni.GetTranslator("pt_BR")
-
-	if v, ok := binding.Validator.Engine().(*validator.Validate); ok {
-		pt_BR.RegisterDefaultTranslations(v, trans)
-	}
+	trans := initTranslator()
+	bundle := initLaguangueBundle()
+	localizer := i18n.NewLocalizer(bundle, language.BrazilianPortuguese.String())
 
 	server := gin.Default()
 	server.Use(gin.Recovery())
@@ -43,10 +40,30 @@ func main() {
 	server.Static("/static", "./static")
 
 	server.GET("/", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "index.html", gin.H{
-			"Title":      "Mateus Werneck",
-			"RecentWork": types.RecentWorks(),
+		contactButton, _ := localizer.Localize(&i18n.LocalizeConfig{
+			MessageID: "ContactButton",
 		})
+
+		c.HTML(http.StatusOK, "index.html", gin.H{
+			"Title":         "Mateus Werneck",
+			"RecentWork":    types.RecentWorks(),
+			"ContactButton": contactButton,
+		})
+	})
+
+	server.POST("/language/:lang", func(c *gin.Context) {
+		lang := c.Param("lang")
+
+		if lang == "en" {
+			localizer = i18n.NewLocalizer(bundle, language.English.String())
+		}
+
+		if lang == "ptBr" {
+			localizer = i18n.NewLocalizer(bundle, language.BrazilianPortuguese.String())
+		}
+
+		c.Header("HX-Location", "/")
+		c.Status(http.StatusOK)
 	})
 
 	server.GET("/contact", func(c *gin.Context) {
@@ -124,4 +141,25 @@ func main() {
 	if err := server.Run(":9010"); err != nil {
 		log.Fatalf("Server initialization failed: %v", err)
 	}
+}
+
+func initTranslator() ut.Translator {
+	pt := pt.New()
+	en := en.New()
+	uni := ut.New(pt, pt, en)
+	trans, _ := uni.GetTranslator("pt_BR")
+
+	if v, ok := binding.Validator.Engine().(*validator.Validate); ok {
+		pt_BR.RegisterDefaultTranslations(v, trans)
+	}
+
+	return trans
+}
+
+func initLaguangueBundle() *i18n.Bundle {
+	bundle := i18n.NewBundle(language.BrazilianPortuguese)
+	bundle.MustLoadMessageFile("translations/en.json")
+	bundle.MustLoadMessageFile("translations/pt-BR.json")
+
+	return bundle
 }
