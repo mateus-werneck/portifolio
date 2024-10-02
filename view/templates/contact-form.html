@@ -3,8 +3,9 @@
     type="submit"
     class="p-8 flex flex-col gap-4"
     hx-post="/contact"
-    hx-target-error="#any-errors"
-    hx-ext="response-targets"
+    hw-swap="innerHTML"
+    hx-target="#contact"
+    hx-target-400="#contact"
 >
     <div class="flex flex-col md:flex md:flex-row pb-4 gap-2">
         <div class="flex flex-col w-full">
@@ -16,34 +17,46 @@
                 name="name"
                 placeholder="Nome"
                 pattern="^[a-zA-Z\s]*$"
+                value="{{.Name}}"
             />
-
-            {{if .errors}}
-            <span id="name-error" class="text-red-500"
-                >{{index .errors 0}}</span
-            >
+            {{if .Errors.Name}}
+            <span id="name-error" class="text-red-500">{{.Errors.Name}}</span>
             {{end}}
         </div>
 
-        <input
-            required
-            class="w-full h-12 md:h-16 indent-2 outline-none bg-slate-100"
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Email"
-        />
+        <div class="flex flex-col w-full">
+            <input
+                required
+                class="w-full h-12 md:h-16 indent-2 outline-none bg-slate-100"
+                type="text"
+                id="email"
+                name="email"
+                placeholder="Email"
+                value="{{.Sender}}"
+            />
+            {{if .Errors.Sender}}
+            <span id="email-error" class="text-red-500"
+                >{{.Errors.Sender}}</span
+            >
+            {{end}}
+        </div>
     </div>
 
-    <textarea
-        required
-        class="w-full h-36 md:h-96 pb-4 pt-2 indent-2 outline-none bg-slate-100"
-        type="text"
-        id="message"
-        name="message"
-        placeholder="Mensagem"
-    >
-    </textarea>
+    <div class="flex flex-col w-full">
+        <textarea
+            required
+            class="w-full h-36 md:h-96 pb-4 pt-2 indent-2 outline-none bg-slate-100"
+            type="text"
+            id="message"
+            name="message"
+            placeholder="Mensagem"
+            value="{{.Body}}"
+        >
+        </textarea>
+        {{if .Errors.Body}}
+        <span id="email-error" class="text-red-500">{{.Errors.Body}}</span>
+        {{end}}
+    </div>
 
     <button
         class="px-4 py-2 w-60 self-center text-center font-normal text-cyan-600 bg-transperent outline-none border-2 border-cyan-600 rounded-3xl hover:bg-cyan-600 hover:text-white transition delay-75 duration-300 ease-in-out"

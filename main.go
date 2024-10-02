@@ -66,8 +66,6 @@ func main() {
 			formData.Errors[field.Field()] = field.Error()
 		}
 
-		slog.Error("Failed to validate ContactForm", "FieldErrors", slog.AnyValue(formData.Errors))
-
 		if len(formData.Errors) > 0 {
 			c.HTML(http.StatusBadRequest, "contact-form.html", formData)
 			return
