@@ -28,7 +28,7 @@
             <input
                 required
                 class="w-full h-12 md:h-16 indent-2 outline-none bg-slate-100"
-                type="text"
+                type="email"
                 id="email"
                 name="email"
                 placeholder="Email"
@@ -50,8 +50,8 @@
             id="message"
             name="message"
             placeholder="Mensagem"
-            value="{{.Body}}"
         >
+            {{.Body}}
         </textarea>
         {{if .Errors.Body}}
         <span id="email-error" class="text-red-500">{{.Errors.Body}}</span>

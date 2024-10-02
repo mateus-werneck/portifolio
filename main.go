@@ -10,8 +10,13 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/gin-gonic/gin/binding"
 	"github.com/go-mail/mail"
+	"github.com/go-playground/locales/en"
+	pt "github.com/go-playground/locales/pt_BR"
+	ut "github.com/go-playground/universal-translator"
 	"github.com/go-playground/validator/v10"
+	"github.com/go-playground/validator/v10/translations/pt_BR"
 	"github.com/joho/godotenv"
 	"github.com/mateus-werneck/portifolio/app/storage"
 	"github.com/mateus-werneck/portifolio/app/types"
@@ -21,6 +26,15 @@ import (
 func main() {
 	godotenv.Load()
 	rdb := storage.NewRedis()
+
+	pt := pt.New()
+	en := en.New()
+	uni := ut.New(pt, pt, en)
+	trans, _ := uni.GetTranslator("pt_BR")
+
+	if v, ok := binding.Validator.Engine().(*validator.Validate); ok {
+		pt_BR.RegisterDefaultTranslations(v, trans)
+	}
 
 	server := gin.Default()
 	server.Use(gin.Recovery())
@@ -63,7 +77,7 @@ func main() {
 		formData.Errors = map[string]string{}
 
 		for _, field := range validationErrors {
-			formData.Errors[field.Field()] = field.Error()
+			formData.Errors[field.Field()] = field.Translate(trans)
 		}
 
 		if len(formData.Errors) > 0 {
