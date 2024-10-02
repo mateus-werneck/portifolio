@@ -13,43 +13,14 @@ import (
 	"github.com/go-mail/mail"
 	"github.com/go-playground/validator/v10"
 	"github.com/joho/godotenv"
+	"github.com/mateus-werneck/portifolio/app/storage"
+	"github.com/mateus-werneck/portifolio/app/types"
 	"github.com/redis/go-redis/v9"
 )
 
-type RecentWork struct {
-	Element     string
-	Image       string
-	Description string
-	Website     string
-	Opacity     string
-}
-
-var works = map[string]RecentWork{
-	"celcoin": {
-		Element:     "celcoin",
-		Image:       "celcoin.svg",
-		Description: "Infratech financeira para potencializar negócios",
-		Website:     "https://www.celcoin.com.br",
-		Opacity:     "opacity-100",
-	},
-	"symplicity": {
-		Element:     "symplicity",
-		Image:       "symplicity.webp",
-		Description: "Streamline system-wide opportunities and increase student engagement",
-		Website:     "https://www.symplicity.com",
-		Opacity:     "opacity-100",
-	},
-}
-
-type ContactEmail struct {
-	Name   string `form:"name" binding:"required,min=3,alpha"`
-	Sender string `form:"email" binding:"required,email"`
-	Body   string `form:"message" binding:"required,min=10,max=400"`
-}
-
 func main() {
 	godotenv.Load()
-	rdb := NewRedis()
+	rdb := storage.NewRedis()
 
 	server := gin.Default()
 	server.Use(gin.Recovery())
@@ -60,7 +31,7 @@ func main() {
 	server.GET("/", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.html", gin.H{
 			"Title":      "Mateus Werneck",
-			"RecentWork": works,
+			"RecentWork": types.RecentWorks(),
 		})
 	})
 
@@ -69,19 +40,19 @@ func main() {
 	})
 
 	server.GET("/recent-work/logo/:name", func(c *gin.Context) {
-		work := works[c.Param("name")]
+		work := types.FindWork(c.Param("name"))
 		work.Opacity = "opacity-0"
 		c.HTML(http.StatusOK, "logo.html", work)
 	})
 
 	server.GET("/recent-work/summary/:name", func(c *gin.Context) {
-		work := works[c.Param("name")]
+		work := types.FindWork(c.Param("name"))
 		c.HTML(http.StatusOK, "logo-summary.html", work)
 	})
 
 	server.POST("/contact", func(c *gin.Context) {
 		var validationErrors validator.ValidationErrors
-		var formData ContactEmail
+		var formData types.ContactEmail
 
 		err := c.ShouldBind(&formData)
 
@@ -89,10 +60,16 @@ func main() {
 			validationErrors = err.(validator.ValidationErrors)
 		}
 
-		if len(validationErrors) > 0 {
-			c.HTML(http.StatusBadRequest, "contact-form.html", gin.H{
-				"errors": validationErrors,
-			})
+		formData.Errors = map[string]string{}
+
+		for _, field := range validationErrors {
+			formData.Errors[field.Field()] = field.Error()
+		}
+
+		slog.Error("Failed to validate ContactForm", "FieldErrors", slog.AnyValue(formData.Errors))
+
+		if len(formData.Errors) > 0 {
+			c.HTML(http.StatusBadRequest, "contact-form.html", formData)
 			return
 		}
 
