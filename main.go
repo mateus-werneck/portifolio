@@ -1,45 +1,44 @@
 package main
 
 import (
-	"errors"
 	"log"
 	"log/slog"
 	"net/http"
 	"os"
 	"strconv"
-	"time"
 
+	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
-	"github.com/gin-gonic/gin/binding"
 	"github.com/go-mail/mail"
-	"github.com/go-playground/locales/en"
-	pt "github.com/go-playground/locales/pt_BR"
-	ut "github.com/go-playground/universal-translator"
 	"github.com/go-playground/validator/v10"
-	"github.com/go-playground/validator/v10/translations/pt_BR"
 	"github.com/joho/godotenv"
+	"github.com/mateus-werneck/portifolio/app/http/middlewares"
 	"github.com/mateus-werneck/portifolio/app/storage"
+	"github.com/mateus-werneck/portifolio/app/tools"
 	"github.com/mateus-werneck/portifolio/app/types"
 	"github.com/nicksnyder/go-i18n/v2/i18n"
-	"github.com/redis/go-redis/v9"
-	"golang.org/x/text/language"
 )
 
 func main() {
 	godotenv.Load()
-	rdb := storage.NewRedis()
-
-	trans := initTranslator()
-	bundle := initLaguangueBundle()
-	localizer := i18n.NewLocalizer(bundle, language.BrazilianPortuguese.String())
 
 	server := gin.Default()
 	server.Use(gin.Recovery())
+
+	store := storage.NewSessionStore()
+	server.Use(sessions.Sessions("guests", store))
+	server.Use(middlewares.LocalizerMiddleware())
 
 	server.LoadHTMLGlob("view/**/*")
 	server.Static("/static", "./static")
 
 	server.GET("/", func(c *gin.Context) {
+		var localizer *i18n.Localizer
+
+		if locale, ok := c.Get("localizer"); ok {
+			localizer = locale.(*i18n.Localizer)
+		}
+
 		contactButton, _ := localizer.Localize(&i18n.LocalizeConfig{
 			MessageID: "ContactButton",
 		})
@@ -53,14 +52,10 @@ func main() {
 
 	server.POST("/language/:lang", func(c *gin.Context) {
 		lang := c.Param("lang")
+		session := sessions.Default(c)
 
-		if lang == "en" {
-			localizer = i18n.NewLocalizer(bundle, language.English.String())
-		}
-
-		if lang == "ptBr" {
-			localizer = i18n.NewLocalizer(bundle, language.BrazilianPortuguese.String())
-		}
+		session.Set("user-lang", lang)
+		session.Save()
 
 		c.Header("HX-Location", "/")
 		c.Status(http.StatusOK)
@@ -94,7 +89,7 @@ func main() {
 		formData.Errors = map[string]string{}
 
 		for _, field := range validationErrors {
-			formData.Errors[field.Field()] = field.Translate(trans)
+			formData.Errors[field.Field()] = field.Translate(tools.Translator)
 		}
 
 		if len(formData.Errors) > 0 {
@@ -102,17 +97,19 @@ func main() {
 			return
 		}
 
-		sentEmails, err := rdb.Get(c, formData.Sender).Int()
+		session := sessions.Default(c)
+		qtdEmails := 0
 
-		if errors.Is(err, redis.Nil) {
-			rdb.Set(c, formData.Sender, sentEmails+1, time.Duration(time.Second*86400))
+		if qtd := session.Get(formData.Sender); qtd != nil {
+			qtdEmails = qtd.(int)
 		}
 
-		if err != nil && !errors.Is(err, redis.Nil) {
-			slog.Error("Failed to find sender on redis", "sender", formData.Sender, "error", err.Error())
+		if qtdEmails == 0 {
+			session.Set(formData.Sender, qtdEmails+1)
+			session.Save()
 		}
 
-		if sentEmails >= 10 {
+		if qtdEmails >= 10 {
 			c.HTML(http.StatusBadRequest, "contact-.html", gin.H{
 				"errors": []string{"Limite de emails atingido."},
 			})
@@ -141,25 +138,4 @@ func main() {
 	if err := server.Run(":9010"); err != nil {
 		log.Fatalf("Server initialization failed: %v", err)
 	}
-}
-
-func initTranslator() ut.Translator {
-	pt := pt.New()
-	en := en.New()
-	uni := ut.New(pt, pt, en)
-	trans, _ := uni.GetTranslator("pt_BR")
-
-	if v, ok := binding.Validator.Engine().(*validator.Validate); ok {
-		pt_BR.RegisterDefaultTranslations(v, trans)
-	}
-
-	return trans
-}
-
-func initLaguangueBundle() *i18n.Bundle {
-	bundle := i18n.NewBundle(language.BrazilianPortuguese)
-	bundle.MustLoadMessageFile("translations/en.json")
-	bundle.MustLoadMessageFile("translations/pt-BR.json")
-
-	return bundle
 }
