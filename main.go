@@ -12,6 +12,7 @@ import (
 	"github.com/go-mail/mail"
 	"github.com/go-playground/validator/v10"
 	"github.com/joho/godotenv"
+	"github.com/mateus-werneck/portifolio/app/builders"
 	"github.com/mateus-werneck/portifolio/app/http/middlewares"
 	"github.com/mateus-werneck/portifolio/app/storage"
 	"github.com/mateus-werneck/portifolio/app/tools"
@@ -35,45 +36,16 @@ func main() {
 	server.GET("/", func(c *gin.Context) {
 		session := sessions.Default(c)
 
-		lang := "pt-br"
-		changeLang := "en"
+		language := session.Get("user-lang").(string)
+		localizer := c.MustGet("localizer").(*i18n.Localizer)
 
-		if userLang := session.Get("user-lang"); userLang != nil {
-			lang = userLang.(string)
-		}
+		pageData := builders.NewHomePage().
+			SetTitle("Mateus Werneck").
+			SetLanguage(language).
+			SetLocalizer(localizer).
+			Build()
 
-		if lang == "en" {
-			changeLang = "pt-br"
-		}
-
-		slog.Info("UserLang", "language", lang)
-
-		var localizer *i18n.Localizer
-
-		if locale, ok := c.Get("localizer"); ok {
-			localizer = locale.(*i18n.Localizer)
-		}
-
-		contactButton, _ := localizer.Localize(&i18n.LocalizeConfig{
-			MessageID: "ContactButton",
-		})
-
-		languageOption := "Inglês"
-		languageFlag := "/static/images/us.svg"
-
-		if lang == "en" {
-			languageOption = "Português"
-			languageFlag = "/static/images/br.svg"
-		}
-
-		c.HTML(http.StatusOK, "index.html", gin.H{
-			"Title":         "Mateus Werneck",
-			"RecentWork":    types.RecentWorks(),
-			"ContactButton": contactButton,
-			"ChangeLang":    changeLang,
-			"LanguageName":  languageOption,
-			"LanguageFlag":  languageFlag,
-		})
+		c.HTML(http.StatusOK, "index.html", pageData)
 	})
 
 	server.POST("/language/:lang", func(c *gin.Context) {
