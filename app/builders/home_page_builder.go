@@ -6,12 +6,16 @@ import (
 )
 
 type HomePageData struct {
-	Title          string
-	ContactButton  string
-	ChangeLanguage string
-	LanguageName   string
-	LanguageFlag   string
-	RecentWork     map[string]types.RecentWork
+	Title            string
+	IntroTitle       string
+	IntroSubTitleOne string
+	IntroSubTitleTwo string
+	CvButton         string
+	ContactButton    string
+	ChangeLanguage   string
+	LanguageName     string
+	LanguageFlag     string
+	RecentWork       map[string]types.RecentWork
 }
 
 type HomePageBuilder struct {
@@ -44,9 +48,11 @@ func (b *HomePageBuilder) Build() interface{} {
 
 	data.Title = b.Title
 
-	data.ContactButton = b.Localizer.MustLocalize(&i18n.LocalizeConfig{
-		MessageID: "ContactButton",
-	})
+	data.IntroTitle = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "IntroTitle"})
+	data.IntroSubTitleOne = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "IntroSubTitleOne"})
+	data.IntroSubTitleTwo = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "IntroSubTitleTwo"})
+	data.CvButton = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "CvButton"})
+	data.ContactButton = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "ContactButton"})
 
 	data.ChangeLanguage = "en"
 	data.LanguageName = "Inglês"

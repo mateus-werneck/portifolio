@@ -25,6 +25,9 @@ func LocalizerMiddleware() gin.HandlerFunc {
 			localizer = i18n.NewLocalizer(bundle, language.English.String())
 		}
 
+		session.Set("user-lang", lang)
+		session.Save()
+
 		c.Set("localizer", localizer)
 
 		c.Next()

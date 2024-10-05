@@ -4,13 +4,12 @@
         class="flex flex-col gap-16 md:gap-8 text-slate-900"
     >
         <h1 class="text-3xl md:text-5xl font-bold">
-            <span>Tech Lead & Desenvolvedor de</span>
-            <span class="text-cyan-600">Software</span>
+            <span>{{.IntroTitle}}</span>
         </h1>
 
         <p class="flex flex-col self-center text-lg md:text-xl text-black">
-            <span>Solução de problemas de maneira</span>
-            <span>inteligente, elegante e eficaz.</span>
+            <span>{{.IntroSubTitleOne}}</span>
+            <span>{{.IntroSubTitleTwo}}</span>
         </p>
 
         <img
@@ -23,7 +22,7 @@
             href="/static/files/Mateus Werneck.pdf"
             download
         >
-            Baixar Currículo
+            {{.CvButton}}
         </a>
     </div>
 </div>

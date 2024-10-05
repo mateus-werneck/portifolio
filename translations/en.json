@@ -1,3 +1,7 @@
 {
-  "ContactButton": "Say Hello"
+  "IntroTitle": "Tech Lead & Software Engineer",
+  "IntroSubTitleOne": "Intelligent, elegant and efficient solutions",
+  "IntroSubTitleTwo": "for solving problems.",
+  "ContactButton": "Say Hello",
+  "CvButton": "Download CV"
 }
