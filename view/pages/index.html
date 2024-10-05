@@ -1,18 +1,26 @@
 {{template "header.html" .}}
 
 {{template "body.html"}}
-<nav class="text-sm md:text-lg flex items-stretch pt-8 pb-16 px-2 gap-16 justify-around">
-    <a href="/" class="pr-16">
-        <img src="/static/images/abstract_m_no_bg.png" class="w-32 hover:filter hover:brightness-90" />
-    </a>
+<nav class="flex pt-8 pb-16 px-4 md:px-16 text-sm md:text-lg">
+    <div class="flex flex-1 items-center">
+        <a href="/">
+            <img src="/static/images/abstract_m_no_bg.png" class="w-20 md:w-32 hover:filter hover:brightness-90" />
+        </a>
+    </div>
 
-    <button hx-post="/language/en">English</button>
-    <button hx-post="/language/ptBr">Português</button>
-
-    <a class="break-keep px-4 py-2 self-center text-center font-normal text-cyan-600 bg-transperent outline-none border-2 border-cyan-600 rounded-3xl
-        hover:bg-cyan-600 hover:text-white transition delay-75 duration-300 ease-in-out" href="/contact">
-        {{.ContactButton}}
-    </a>
+   <div id="header-actions" class="flex flex-5 gap-4 md:gap-8">
+       <a class="hidden md:flex break-keep px-4 py-2 self-center text-center font-normal text-cyan-600 bg-transperent outline-none border-2 border-cyan-600 rounded-3xl
+           hover:bg-cyan-600 hover:text-white transition delay-75 duration-300 ease-in-out" href="/contact">
+           {{.ContactButton}}
+       </a>
+       <button
+           class="flex gap-2 items-center hover:filter hover:brightness-110 hover:text-slate-600"
+           hx-post="/language/{{.ChangeLang}}"
+        >
+                  <img src="{{.LanguageFlag}}" class="w-8"/>
+                  <span>{{.LanguageName}}</span>
+        <button/>
+   </div>
 </nav>
 {{template "personal-heading.html" .}}
 {{template "personal-summary.html" .}}

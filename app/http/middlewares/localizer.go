@@ -15,7 +15,7 @@ func LocalizerMiddleware() gin.HandlerFunc {
 		bundle := tools.Bundle
 		localizer := i18n.NewLocalizer(bundle, language.BrazilianPortuguese.String())
 
-		lang := "ptBr"
+		lang := "pt-br"
 
 		if sessionLang := session.Get("user-lang"); sessionLang != nil {
 			lang = sessionLang.(string)

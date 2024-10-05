@@ -33,6 +33,21 @@ func main() {
 	server.Static("/static", "./static")
 
 	server.GET("/", func(c *gin.Context) {
+		session := sessions.Default(c)
+
+		lang := "pt-br"
+		changeLang := "en"
+
+		if userLang := session.Get("user-lang"); userLang != nil {
+			lang = userLang.(string)
+		}
+
+		if lang == "en" {
+			changeLang = "pt-br"
+		}
+
+		slog.Info("UserLang", "language", lang)
+
 		var localizer *i18n.Localizer
 
 		if locale, ok := c.Get("localizer"); ok {
@@ -43,10 +58,21 @@ func main() {
 			MessageID: "ContactButton",
 		})
 
+		languageOption := "Inglês"
+		languageFlag := "/static/images/us.svg"
+
+		if lang == "en" {
+			languageOption = "Português"
+			languageFlag = "/static/images/br.svg"
+		}
+
 		c.HTML(http.StatusOK, "index.html", gin.H{
 			"Title":         "Mateus Werneck",
 			"RecentWork":    types.RecentWorks(),
 			"ContactButton": contactButton,
+			"ChangeLang":    changeLang,
+			"LanguageName":  languageOption,
+			"LanguageFlag":  languageFlag,
 		})
 	})
 
