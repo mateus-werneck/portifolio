@@ -17,6 +17,7 @@ import (
 	"github.com/mateus-werneck/portifolio/app/tools"
 	"github.com/mateus-werneck/portifolio/app/types"
 	"github.com/nicksnyder/go-i18n/v2/i18n"
+	sloggin "github.com/samber/slog-gin"
 )
 
 func main() {
@@ -28,6 +29,11 @@ func main() {
 	store := storage.NewSessionStore()
 	server.Use(sessions.Sessions("guests", store))
 	server.Use(middlewares.LocalizerMiddleware())
+	server.Use(sloggin.NewWithConfig(tools.GlobalLogger, sloggin.Config{
+		WithRequestBody:    true,
+		WithRequestHeader:  true,
+		WithResponseHeader: true,
+	}))
 
 	server.LoadHTMLGlob("view/**/*")
 	server.Static("/static", "./static")

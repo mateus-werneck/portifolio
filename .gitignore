@@ -3,4 +3,4 @@ tmp/
 .env
 redis-data/
 *.rdb
-.log
+*.log

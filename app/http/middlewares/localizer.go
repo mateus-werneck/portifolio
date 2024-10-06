@@ -15,13 +15,17 @@ func LocalizerMiddleware() gin.HandlerFunc {
 		bundle := tools.Bundle
 		localizer := i18n.NewLocalizer(bundle, language.BrazilianPortuguese.String())
 
-		lang := "pt-br"
+		lang := c.GetHeader("Accept-Language")
+
+		if lang == "" {
+			lang = "pt-BR"
+		}
 
 		if sessionLang := session.Get("user-lang"); sessionLang != nil {
 			lang = sessionLang.(string)
 		}
 
-		if lang == "en" {
+		if lang == "en-US" {
 			localizer = i18n.NewLocalizer(bundle, language.English.String())
 		}
 

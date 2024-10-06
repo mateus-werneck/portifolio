@@ -79,7 +79,7 @@ func (b *HomePageBuilder) Build() interface{} {
 	data := HomePageData{
 		Intro: HomePageIntro{},
 		LanguageSettings: UserLanguage{
-			ChangeLanguage: "en",
+			ChangeLanguage: "en-US",
 			LanguageName:   "Inglês",
 			LanguageFlag:   "/static/images/us.svg",
 		},
@@ -94,8 +94,8 @@ func (b *HomePageBuilder) Build() interface{} {
 	data.Intro.SubTitle = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Intro.SubTitle"})
 	data.Intro.SubTitleTwo = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Intro.SubTitleTwo"})
 
-	if b.Language == "en" {
-		data.LanguageSettings.ChangeLanguage = "pt-br"
+	if b.Language == "en-US" {
+		data.LanguageSettings.ChangeLanguage = "pt-BR"
 		data.LanguageSettings.LanguageName = "Português"
 		data.LanguageSettings.LanguageFlag = "/static/images/br.svg"
 	}
