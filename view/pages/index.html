@@ -11,14 +11,14 @@
    <div id="header-actions" class="flex flex-5 gap-4 md:gap-8">
        <a class="hidden md:flex break-keep px-4 py-2 self-center text-center font-normal text-cyan-600 bg-transperent outline-none border-2 border-cyan-600 rounded-3xl
            hover:bg-cyan-600 hover:text-white transition delay-75 duration-300 ease-in-out" href="/contact">
-           {{.ContactButton}}
+           {{.Buttons.ContactMe}}
        </a>
        <button
            class="flex gap-2 items-center hover:filter hover:brightness-110 hover:text-slate-600"
-           hx-post="/language/{{.ChangeLanguage}}"
+           hx-post="/language/{{.LanguageSettings.ChangeLanguage}}"
         >
-                  <img src="{{.LanguageFlag}}" class="w-8"/>
-                  <span>{{.LanguageName}}</span>
+                  <img src="{{.LanguageSettings.LanguageFlag}}" class="w-8"/>
+                  <span>{{.LanguageSettings.LanguageName}}</span>
         <button/>
    </div>
 </nav>

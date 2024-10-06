@@ -3,18 +3,14 @@
         id="summary-text">
         <div class="flex flex-col">
             <h1 class="text-center text-white font-bold break-words text-lg md:text-2xl">
-                Olá, meu nome é Mateus.
+                {{.Summary.Greeting}}
             </h1>
             <h1 class="text-center text-white font-bold break-words text-lg md:text-2xl">
-                É um prazer recebé-lo aqui.
+                {{.Summary.GreetingTwo}}
             </h1>
         </div>
         <p class="text-sm w-full text-center leading-6 md:break-words md:w-6/12 md:text-lg">
-            Desde o início da minha carreira como desenvolvedor sempre fui apaixonado por descobrir e criar ferramentas
-            novas.
-            Tive minha primeira imersão na área há 5 anos atrás e desde então pude colaborar com profissionais e
-            talentos de todos os tipos.
-            Participei ativamente na criação de produtos digitais e na melhoria constante de processos internos.
+            {{.Summary.Paragraph}}
         </p>
     </div>
 

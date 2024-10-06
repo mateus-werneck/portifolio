@@ -3,6 +3,15 @@ Title = "Tech Lead & Desenvolvedor de Software"
 SubTitle = "Solução de problemas de maneira"
 SubTitleTwo = "inteligente, elegante e eficaz."
 
+[Summary]
+Greeting = "Olá, meu nome é Mateus."
+GreetingTwo = "É um prazer recebé-lo aqui."
+Paragraph = """
+    Desde o início da minha carreira como desenvolvedor sempre fui apaixonado por descobrir e criar ferramentas novas.
+    Tive minha primeira imersão na área há 5 anos atrás e desde então pude colaborar com profissionais e talentos de todos os tipos.
+    Participei ativamente na criação de produtos digitais e na melhoria constante de processos internos.
+"""
+
 [Buttons]
 ContactMe = "Fale Comigo"
 DownloadCv = "Baixar currículo"

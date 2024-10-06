@@ -5,16 +5,35 @@ import (
 	"github.com/nicksnyder/go-i18n/v2/i18n"
 )
 
+type HomePageIntro struct {
+	Title       string
+	SubTitle    string
+	SubTitleTwo string
+}
+
+type HomePageSummary struct {
+	Greeting    string
+	GreetingTwo string
+	Paragraph   string
+}
+
+type HomePageButtons struct {
+	ContactMe  string
+	DownloadCv string
+}
+
+type UserLanguage struct {
+	ChangeLanguage string
+	LanguageName   string
+	LanguageFlag   string
+}
+
 type HomePageData struct {
 	Title            string
-	IntroTitle       string
-	IntroSubTitleOne string
-	IntroSubTitleTwo string
-	CvButton         string
-	ContactButton    string
-	ChangeLanguage   string
-	LanguageName     string
-	LanguageFlag     string
+	LanguageSettings UserLanguage
+	Intro            HomePageIntro
+	Buttons          HomePageButtons
+	Summary          HomePageSummary
 	RecentWork       map[string]types.RecentWork
 }
 
@@ -44,26 +63,35 @@ func (b *HomePageBuilder) SetLocalizer(localizer *i18n.Localizer) PageBuilder {
 }
 
 func (b *HomePageBuilder) Build() interface{} {
-	var data HomePageData
+	data := HomePageData{
+		Intro: HomePageIntro{},
+		LanguageSettings: UserLanguage{
+			ChangeLanguage: "en",
+			LanguageName:   "Inglês",
+			LanguageFlag:   "/static/images/us.svg",
+		},
+		Summary: HomePageSummary{},
+		Buttons: HomePageButtons{},
+	}
 
 	data.Title = b.Title
 
-	data.IntroTitle = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Intro.Title"})
-	data.IntroSubTitleOne = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Intro.SubTitle"})
-	data.IntroSubTitleTwo = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Intro.SubTitleTwo"})
-	data.CvButton = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.DownloadCv"})
-	data.ContactButton = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.ContactMe"})
+	data.Intro.Title = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Intro.Title"})
+	data.Intro.SubTitle = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Intro.SubTitle"})
+	data.Intro.SubTitleTwo = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Intro.SubTitleTwo"})
 
-	data.ChangeLanguage = "en"
-	data.LanguageName = "Inglês"
-	data.LanguageFlag = "/static/images/us.svg"
+	data.Buttons.ContactMe = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.DownloadCv"})
+	data.Buttons.DownloadCv = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.ContactMe"})
 
 	if b.Language == "en" {
-		data.ChangeLanguage = "pt-br"
-		data.LanguageName = "Português"
-		data.LanguageFlag = "/static/images/br.svg"
+		data.LanguageSettings.ChangeLanguage = "pt-br"
+		data.LanguageSettings.LanguageName = "Português"
+		data.LanguageSettings.LanguageFlag = "/static/images/br.svg"
 	}
 
+	data.Summary.Greeting = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Summary.Greeting"})
+	data.Summary.GreetingTwo = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Summary.GreetingTwo"})
+	data.Summary.Paragraph = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Summary.Paragraph"})
 	data.RecentWork = types.RecentWorks()
 
 	return data

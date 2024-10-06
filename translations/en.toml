@@ -3,6 +3,15 @@ Title = "Tech Lead & Software Engineer"
 SubTitle = "Intelligent, elegant and efficient solutions"
 SubTitleTwo = "for solving problems."
 
+[Summary]
+Greeting = "Hi, I'm Mateus."
+GreetingTwo = "It's a pleasure having you here."
+Paragraph = """
+    Desde o início da minha carreira como desenvolvedor sempre fui apaixonado por descobrir e criar ferramentas novas.
+    Tive minha primeira imersão na área há 5 anos atrás e desde então pude colaborar com profissionais e talentos de todos os tipos.
+    Participei ativamente na criação de produtos digitais e na melhoria constante de processos internos.
+"""
+
 [Buttons]
 ContactMe = "Say Hello"
 DownloadCv = "Download Resume"
