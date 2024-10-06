@@ -1,5 +1,5 @@
 [Intro]
-Title = "Tech Lead & Desenvolvedor de Software"
+Title = "Lider Técnico & Desenvolvedor de Software"
 SubTitle = "Solução de problemas de maneira"
 SubTitleTwo = "inteligente, elegante e eficaz."
 
@@ -11,6 +11,17 @@ Paragraph = """
     Tive minha primeira imersão na área há 5 anos atrás e desde então pude colaborar com profissionais e talentos de todos os tipos.
     Participei ativamente na criação de produtos digitais e na melhoria constante de processos internos.
 """
+
+[TechLead]
+Title = "Líder Técnico"
+Description = "Trabalho em equipe e dedicaçao são essenciais."
+FirstSection = "Ferramentas"
+SecondSection = "Habilidades"
+SkillOne = "Planejamento"
+SkillTwo = "Comunicação"
+SkillThree = "Gestão de Pessoas"
+SkillFour = "Design de Sistemas"
+SkillFive = "Resolução de Problemas"
 
 [Buttons]
 ContactMe = "Fale Comigo"

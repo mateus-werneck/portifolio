@@ -12,6 +12,17 @@ Paragraph = """
     Participei ativamente na criação de produtos digitais e na melhoria constante de processos internos.
 """
 
+[TechLead]
+Title = "Tech Lead"
+Description = "Teamwork and dedication are fundamental."
+FirstSection = "Tools"
+SecondSection = "Skills"
+SkillOne = "Planning"
+SkillTwo = "Communication"
+SkillThree = "People Management"
+SkillFour = "Design System"
+SkillFive = "Troubleshooting"
+
 [Buttons]
 ContactMe = "Say Hello"
 DownloadCv = "Download Resume"

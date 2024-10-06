@@ -28,12 +28,25 @@ type UserLanguage struct {
 	LanguageFlag   string
 }
 
+type TechLead struct {
+	Title         string
+	Description   string
+	FirstSection  string
+	SecondSection string
+	SkillOne      string
+	SkillTwo      string
+	SkillThree    string
+	SkillFour     string
+	SkillFive     string
+}
+
 type HomePageData struct {
 	Title            string
 	LanguageSettings UserLanguage
 	Intro            HomePageIntro
 	Buttons          HomePageButtons
 	Summary          HomePageSummary
+	TechLead         TechLead
 	RecentWork       map[string]types.RecentWork
 }
 
@@ -70,8 +83,9 @@ func (b *HomePageBuilder) Build() interface{} {
 			LanguageName:   "Inglês",
 			LanguageFlag:   "/static/images/us.svg",
 		},
-		Summary: HomePageSummary{},
-		Buttons: HomePageButtons{},
+		Summary:  HomePageSummary{},
+		TechLead: TechLead{},
+		Buttons:  HomePageButtons{},
 	}
 
 	data.Title = b.Title
@@ -79,9 +93,6 @@ func (b *HomePageBuilder) Build() interface{} {
 	data.Intro.Title = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Intro.Title"})
 	data.Intro.SubTitle = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Intro.SubTitle"})
 	data.Intro.SubTitleTwo = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Intro.SubTitleTwo"})
-
-	data.Buttons.ContactMe = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.DownloadCv"})
-	data.Buttons.DownloadCv = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.ContactMe"})
 
 	if b.Language == "en" {
 		data.LanguageSettings.ChangeLanguage = "pt-br"
@@ -92,7 +103,21 @@ func (b *HomePageBuilder) Build() interface{} {
 	data.Summary.Greeting = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Summary.Greeting"})
 	data.Summary.GreetingTwo = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Summary.GreetingTwo"})
 	data.Summary.Paragraph = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Summary.Paragraph"})
+
+	data.TechLead.Title = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "TechLead.Title"})
+	data.TechLead.Description = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "TechLead.Description"})
+	data.TechLead.FirstSection = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "TechLead.FirstSection"})
+	data.TechLead.SecondSection = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "TechLead.SecondSection"})
+	data.TechLead.SkillOne = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "TechLead.SkillOne"})
+	data.TechLead.SkillTwo = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "TechLead.SkillTwo"})
+	data.TechLead.SkillThree = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "TechLead.SkillThree"})
+	data.TechLead.SkillFour = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "TechLead.SkillFour"})
+	data.TechLead.SkillFive = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "TechLead.SkillFive"})
+
 	data.RecentWork = types.RecentWorks()
+
+	data.Buttons.ContactMe = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.DownloadCv"})
+	data.Buttons.DownloadCv = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.ContactMe"})
 
 	return data
 }

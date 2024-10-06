@@ -19,21 +19,21 @@
         <div
             class="flex flex-col p-4 gap-6 md:gap-8 items-center border-b-2 md:border-b-0 md:border-r-2 border-slate-100">
             <img src="/static/images/terminal.svg" class="w-16" />
-            <h1 class="text-blue-950 font-bold text-xl">Tech Lead</h1>
-            <span class="text-blue-950">Trabalho em equipe e dedicaçao são essenciais.</span>
+            <h1 class="text-blue-950 font-bold text-xl">{{.TechLead.Title}}</h1>
+            <span class="text-blue-950">{{.TechLead.Description}}</span>
 
             <div class="flex flex-col gap-2">
-                <strong class="text-emerald-600">Ferramentas:</strong>
+                <strong class="text-emerald-600">{{.TechLead.FirstSection}}:</strong>
                 <span>Jira, Miro, Figma, Slack</span>
             </div>
 
             <div class="flex flex-col gap-2">
-                <strong class="text-emerald-600">Habilidades:</strong>
-                <span>Planejamento</span>
-                <span>Comunicação</span>
-                <span>Gestão de Pessoas</span>
-                <span>System Design</span>
-                <span>Troubleshooting</span>
+                <strong class="text-emerald-600">{{.TechLead.SecondSection}}:</strong>
+                <span>{{.TechLead.SkillOne}}</span>
+                <span>{{.TechLead.SkillTwo}}</span>
+                <span>{{.TechLead.SkillThree}}</span>
+                <span>{{.TechLead.SkillFour}}</span>
+                <span>{{.TechLead.SkillFive}}</span>
             </div>
 
         </div>
