@@ -2,7 +2,6 @@ package main
 
 import (
 	"log"
-	"log/slog"
 	"net/http"
 	"os"
 	"strconv"
@@ -125,13 +124,15 @@ func main() {
 
 		err = d.DialAndSend(email)
 		if err != nil {
-			slog.Error("SMTP sendEmail failed", "error", err)
+			tools.GlobalLogger.Error("SMTP sendEmail failed", "error", err)
 			c.HTML(http.StatusBadRequest, "contact-form.html", gin.H{})
 			return
 		}
 
 		c.HTML(http.StatusOK, "contact-form.html", gin.H{})
 	})
+
+	tools.GlobalLogger.Debug("Server started", "Port", "9010")
 
 	if err := server.Run(":9010"); err != nil {
 		log.Fatalf("Server initialization failed: %v", err)

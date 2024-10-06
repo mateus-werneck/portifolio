@@ -48,11 +48,11 @@ func (b *HomePageBuilder) Build() interface{} {
 
 	data.Title = b.Title
 
-	data.IntroTitle = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "IntroTitle"})
-	data.IntroSubTitleOne = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "IntroSubTitleOne"})
-	data.IntroSubTitleTwo = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "IntroSubTitleTwo"})
-	data.CvButton = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "CvButton"})
-	data.ContactButton = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "ContactButton"})
+	data.IntroTitle = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Intro.Title"})
+	data.IntroSubTitleOne = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Intro.SubTitle"})
+	data.IntroSubTitleTwo = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Intro.SubTitleTwo"})
+	data.CvButton = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.DownloadCv"})
+	data.ContactButton = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.ContactMe"})
 
 	data.ChangeLanguage = "en"
 	data.LanguageName = "Inglês"

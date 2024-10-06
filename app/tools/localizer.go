@@ -8,6 +8,7 @@ import (
 	"github.com/go-playground/validator/v10"
 	"github.com/go-playground/validator/v10/translations/pt_BR"
 	"github.com/nicksnyder/go-i18n/v2/i18n"
+	"github.com/pelletier/go-toml/v2"
 	"golang.org/x/text/language"
 )
 
@@ -35,8 +36,10 @@ func NewTranslator() ut.Translator {
 
 func NewLanguageBundle() *i18n.Bundle {
 	bundle := i18n.NewBundle(language.BrazilianPortuguese)
-	bundle.MustLoadMessageFile("translations/en.json")
-	bundle.MustLoadMessageFile("translations/pt-BR.json")
+	bundle.RegisterUnmarshalFunc("toml", toml.Unmarshal)
+
+	bundle.MustLoadMessageFile("translations/en.toml")
+	bundle.MustLoadMessageFile("translations/pt-BR.toml")
 
 	return bundle
 }
