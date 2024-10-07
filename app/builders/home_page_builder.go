@@ -22,6 +22,7 @@ type HomePageButtons struct {
 	DownloadCv string
 	LearnMore  string
 	Visit      string
+	Proposal   string
 }
 
 type UserLanguage struct {
@@ -64,6 +65,11 @@ type RecentJobs struct {
 	Jobs        map[string]types.RecentWork
 }
 
+type ShowInterest struct {
+	Title       string
+	Description string
+}
+
 type HomePageData struct {
 	Title            string
 	LanguageSettings UserLanguage
@@ -74,6 +80,7 @@ type HomePageData struct {
 	Backend          Backend
 	Frontend         Frontend
 	RecentJobs       RecentJobs
+	ShowInterest     ShowInterest
 }
 
 type HomePageBuilder struct {
@@ -156,10 +163,14 @@ func (b *HomePageBuilder) Build() interface{} {
 	data.RecentJobs.Description = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "RecentJobs.Description"})
 	data.RecentJobs.Jobs = types.RecentWorks()
 
+	data.ShowInterest.Title = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "ShowInterest.Title"})
+	data.ShowInterest.Description = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "ShowInterest.Description"})
+
 	data.Buttons.ContactMe = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.DownloadCv"})
 	data.Buttons.DownloadCv = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.ContactMe"})
 	data.Buttons.LearnMore = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.LearnMore"})
 	data.Buttons.Visit = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.Visit"})
+	data.Buttons.Proposal = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.Proposal"})
 
 	return data
 }

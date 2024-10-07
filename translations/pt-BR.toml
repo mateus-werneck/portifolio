@@ -41,8 +41,13 @@ ThirdSection = "Ferramentas"
 Title = "Trabalhos Recentes"
 Description = "Tenho muito orgulho de ter contribuido com empresas do futuro."
 
+[ShowInterest]
+Title = "Tem interesse em colaborar?"
+Description = "Estou sempre aberto para discutir novas ideias e propostas."
+
 [Buttons]
 ContactMe = "Fale Comigo"
 DownloadCv = "Baixar currículo"
 LearnMore = "Ver mais"
 Visit = "Visitar site"
+Proposal = "Iniciar uma proposta"

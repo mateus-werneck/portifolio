@@ -41,8 +41,13 @@ ThirdSection = "Tools"
 Title = "Recent Work"
 Description = "I'm proud to have collaborated with companies from the future."
 
+[ShowInterest]
+Title = "Peaked your interest?"
+Description = "I'm always excited to discuss new ideias."
+
 [Buttons]
 ContactMe = "Say Hello"
 DownloadCv = "Download Resume"
 LearnMore = "Learn More"
 Visit = "Visit Website"
+Proposal = "Make an offer"
