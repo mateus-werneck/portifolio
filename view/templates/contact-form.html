@@ -1,3 +1,13 @@
+<script>
+    function init() {
+        let textarea = document.getElementById("message");
+        if (textarea != null) {
+            textarea.value = "";
+        }
+    }
+    window.onload = init;
+</script>
+
 <form
     id="contact-form"
     type="submit"
@@ -7,15 +17,17 @@
     hx-target="#contact"
     hx-target-400="#contact"
 >
-    <div class="flex flex-col md:flex md:flex-row pb-4 gap-2">
+    <div
+        class="flex flex-col w-full md:w-9/12 self-center md:flex md:flex-row pb-4 gap-2"
+    >
         <div class="flex flex-col w-full">
             <input
                 required
-                class="w-full h-12 md:h-16 indent-2 outline-none bg-slate-100"
+                class="h-12 md:h-16 indent-2 outline-none bg-slate-100"
                 type="text"
                 id="name"
                 name="name"
-                placeholder="Nome"
+                placeholder="{{.ContactFields.Name}}"
                 pattern="^[a-zA-Z\s]*$"
                 value="{{.Name}}"
             />
@@ -27,11 +39,11 @@
         <div class="flex flex-col w-full">
             <input
                 required
-                class="w-full h-12 md:h-16 indent-2 outline-none bg-slate-100"
+                class="h-12 md:h-16 indent-2 outline-none bg-slate-100"
                 type="email"
                 id="email"
                 name="email"
-                placeholder="Email"
+                placeholder="{{.ContactFields.Email}}"
                 value="{{.Sender}}"
             />
             {{if .Errors.Sender}}
@@ -42,14 +54,14 @@
         </div>
     </div>
 
-    <div class="flex flex-col w-full">
+    <div class="flex flex-col w-full md:w-9/12 self-center">
         <textarea
             required
-            class="w-full h-36 md:h-96 pb-4 pt-2 indent-2 outline-none bg-slate-100"
+            class="h-36 md:h-96 pb-4 pt-2 pl-2 text-left outline-none bg-slate-100"
             type="text"
             id="message"
             name="message"
-            placeholder="Mensagem"
+            placeholder="{{.ContactFields.Message}}"
         >
             {{.Body}}
         </textarea>

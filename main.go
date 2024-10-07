@@ -65,7 +65,16 @@ func main() {
 	})
 
 	server.GET("/contact", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "contact.html", gin.H{})
+		localizer := c.MustGet("localizer").(*i18n.Localizer)
+		c.HTML(http.StatusOK, "contact.html", gin.H{
+			"FormTitle":       localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Contact.Title"}),
+			"FormDescription": localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Contact.Description"}),
+			"ContactFields": map[string]string{
+				"Name":    localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "ContactFields.Name"}),
+				"Email":   localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "ContactFields.Email"}),
+				"Message": localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "ContactFields.Message"}),
+			},
+		})
 	})
 
 	server.GET("/recent-work/logo/:name", func(c *gin.Context) {
@@ -81,6 +90,7 @@ func main() {
 		c.HTML(http.StatusOK, "logo-summary.html", gin.H{
 			"Element":     work.Element,
 			"Description": work.Description,
+			"Website":     work.Website,
 			"Buttons": builders.HomePageButtons{
 				Visit: localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.Visit"}),
 			},

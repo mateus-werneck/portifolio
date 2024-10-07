@@ -45,9 +45,19 @@ Description = "Tenho muito orgulho de ter contribuido com empresas do futuro."
 Title = "Tem interesse em colaborar?"
 Description = "Estou sempre aberto para discutir novas ideias e propostas."
 
+[Contact]
+Title = "Obrigado pela paciência."
+Description = "Me conte como posso ajudar."
+
+[ContactFields]
+Name = "Nome"
+Email = "Email"
+Message = "Escreva sua mensagem"
+
 [Buttons]
 ContactMe = "Fale Comigo"
 DownloadCv = "Baixar currículo"
 LearnMore = "Ver mais"
 Visit = "Visitar site"
 Proposal = "Iniciar uma proposta"
+BackButton = "x"

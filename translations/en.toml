@@ -45,6 +45,15 @@ Description = "I'm proud to have collaborated with companies from the future."
 Title = "Peaked your interest?"
 Description = "I'm always excited to discuss new ideias."
 
+[Contact]
+Title = "Thank you for reaching out."
+Description = "How can I help you?"
+
+[ContactFields]
+Name = "Name"
+Email = "Email"
+Message = "Write your message."
+
 [Buttons]
 ContactMe = "Say Hello"
 DownloadCv = "Download Resume"
