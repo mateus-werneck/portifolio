@@ -166,8 +166,8 @@ func (b *HomePageBuilder) Build() interface{} {
 	data.ShowInterest.Title = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "ShowInterest.Title"})
 	data.ShowInterest.Description = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "ShowInterest.Description"})
 
-	data.Buttons.ContactMe = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.DownloadCv"})
-	data.Buttons.DownloadCv = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.ContactMe"})
+	data.Buttons.ContactMe = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.ContactMe"})
+	data.Buttons.DownloadCv = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.DownloadCv"})
 	data.Buttons.LearnMore = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.LearnMore"})
 	data.Buttons.Visit = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.Visit"})
 	data.Buttons.Proposal = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.Proposal"})
