@@ -76,7 +76,15 @@ func main() {
 
 	server.GET("/recent-work/summary/:name", func(c *gin.Context) {
 		work := types.FindWork(c.Param("name"))
-		c.HTML(http.StatusOK, "logo-summary.html", work)
+		localizer := c.MustGet("localizer").(*i18n.Localizer)
+
+		c.HTML(http.StatusOK, "logo-summary.html", gin.H{
+			"Element":     work.Element,
+			"Description": work.Description,
+			"Buttons": builders.HomePageButtons{
+				Visit: localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.Visit"}),
+			},
+		})
 	})
 
 	server.POST("/contact", func(c *gin.Context) {

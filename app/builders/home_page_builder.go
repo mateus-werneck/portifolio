@@ -74,7 +74,6 @@ type HomePageData struct {
 	Backend          Backend
 	Frontend         Frontend
 	RecentJobs       RecentJobs
-	RecentWork       map[string]types.RecentWork
 }
 
 type HomePageBuilder struct {
