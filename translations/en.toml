@@ -37,6 +37,12 @@ FirstSection = "Languages"
 SecondSection = "Frameworks"
 ThirdSection = "Tools"
 
+[RecentJobs]
+Title = "Recent Work"
+Description = "I'm proud to have collaborated with companies from the future."
+
 [Buttons]
 ContactMe = "Say Hello"
 DownloadCv = "Download Resume"
+LearnMore = "Learn More"
+Visit = "Visit Website"

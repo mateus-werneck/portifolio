@@ -37,6 +37,12 @@ FirstSection = "Linguagens"
 SecondSection = "Frameworks"
 ThirdSection = "Ferramentas"
 
+[RecentJobs]
+Title = "Trabalhos Recentes"
+Description = "Tenho muito orgulho de ter contribuido com empresas do futuro."
+
 [Buttons]
 ContactMe = "Fale Comigo"
 DownloadCv = "Baixar currículo"
+LearnMore = "Ver mais"
+Visit = "Visitar site"
