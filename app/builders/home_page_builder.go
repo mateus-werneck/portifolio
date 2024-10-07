@@ -40,6 +40,22 @@ type TechLead struct {
 	SkillFive     string
 }
 
+type Backend struct {
+	Title         string
+	Description   string
+	FirstSection  string
+	SecondSection string
+	ThirdSection  string
+}
+
+type Frontend struct {
+	Title         string
+	Description   string
+	FirstSection  string
+	SecondSection string
+	ThirdSection  string
+}
+
 type HomePageData struct {
 	Title            string
 	LanguageSettings UserLanguage
@@ -47,6 +63,8 @@ type HomePageData struct {
 	Buttons          HomePageButtons
 	Summary          HomePageSummary
 	TechLead         TechLead
+	Backend          Backend
+	Frontend         Frontend
 	RecentWork       map[string]types.RecentWork
 }
 
@@ -113,6 +131,18 @@ func (b *HomePageBuilder) Build() interface{} {
 	data.TechLead.SkillThree = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "TechLead.SkillThree"})
 	data.TechLead.SkillFour = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "TechLead.SkillFour"})
 	data.TechLead.SkillFive = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "TechLead.SkillFive"})
+
+	data.Backend.Title = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Backend.Title"})
+	data.Backend.Description = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Backend.Description"})
+	data.Backend.FirstSection = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Backend.FirstSection"})
+	data.Backend.SecondSection = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Backend.SecondSection"})
+	data.Backend.ThirdSection = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Backend.ThirdSection"})
+
+	data.Frontend.Title = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Frontend.Title"})
+	data.Frontend.Description = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Frontend.Description"})
+	data.Frontend.FirstSection = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Frontend.FirstSection"})
+	data.Frontend.SecondSection = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Frontend.SecondSection"})
+	data.Frontend.ThirdSection = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Frontend.ThirdSection"})
 
 	data.RecentWork = types.RecentWorks()
 

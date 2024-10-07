@@ -40,11 +40,11 @@
         <div
             class="flex flex-col p-4 gap-6 md:gap-8 items-center border-b-2 md:border-b-0 md:border-r-2 border-slate-100">
             <img src="/static/images/gear.svg" class="w-16" />
-            <h1 class="text-blue-950 font-bold text-xl">Backend Developer</h1>
-            <span class="text-blue-950">Problemas complexos exigem soluções simples.</span>
+            <h1 class="text-blue-950 font-bold text-xl">{{.Backend.Title}}</h1>
+            <span class="text-blue-950">{{.Backend.Description}}</span>
 
             <div class="flex flex-col gap-4 items-center pb-2">
-                <strong class="text-emerald-600 pb-4">Linguagens:</strong>
+                <strong class="text-emerald-600 pb-4">{{.Backend.FirstSection}}:</strong>
 
                 <div class="flex gap-4 items-center">
                     <a href="https://go.dev/" target="_blank"
@@ -66,7 +66,7 @@
             </div>
 
             <div class="flex flex-col gap-3 items-center">
-                <strong class="text-emerald-600 pb-2">Frameworks:</strong>
+                <strong class="text-emerald-600 pb-2">{{.Backend.SecondSection}}:</strong>
 
                 <div class="flex gap-4 items-center">
                     <a href="https://laravel.com/" target="_blank"
@@ -93,7 +93,7 @@
             </div>
 
             <div class="flex flex-col gap-2">
-                <strong class="text-emerald-600 pb-4">Ferramentas:</strong>
+                <strong class="text-emerald-600 pb-4">{{.Backend.ThirdSection}}:</strong>
 
                 <div class="grid grid-cols-3 gap-6">
                     <a href="https://aws.amazon.com/" target="_blank"
@@ -130,11 +130,11 @@
 
         <div class="flex flex-col p-4 gap-6 md:gap-8 items-center">
             <img src="/static/images/front-end.svg" class="w-16" />
-            <h1 class="text-blue-950 font-bold text-xl">Frontend Developer</h1>
-            <span class="text-blue-950">Coloque uma frase aqui.</span>
+            <h1 class="text-blue-950 font-bold text-xl">{{.Frontend.Title}}</h1>
+            <span class="text-blue-950">{{.Frontend.Description}}</span>
 
             <div class="flex flex-col gap-4 items-center pb-2">
-                <strong class="text-emerald-600 pb-4">Linguagens:</strong>
+                <strong class="text-emerald-600 pb-4">{{.Frontend.FirstSection}}:</strong>
 
                 <div class="flex gap-4 items-center">
                     <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank"
@@ -156,7 +156,7 @@
             </div>
 
             <div class="flex flex-col gap-3 items-center">
-                <strong class="text-emerald-600 pb-2">Frameworks:</strong>
+                <strong class="text-emerald-600 pb-2">{{.Frontend.SecondSection}}:</strong>
 
                 <div class="flex gap-4 items-center">
                     <a href="https://react.dev/" target="_blank"
@@ -178,7 +178,7 @@
             </div>
 
             <div class="flex flex-col gap-2">
-                <strong class="text-emerald-600 pb-4">Ferramentas:</strong>
+                <strong class="text-emerald-600 pb-4">{{.Frontend.ThirdSection}}:</strong>
 
                 <div class="flex gap-6">
                     <a href="https://htmx.org/" target="_blank"

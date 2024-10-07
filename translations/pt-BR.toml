@@ -23,6 +23,20 @@ SkillThree = "Gestão de Pessoas"
 SkillFour = "Design de Sistemas"
 SkillFive = "Resolução de Problemas"
 
+[Backend]
+Title = "Desenvolvedor Backend"
+Description = "Problemas complexos exigem soluções simples."
+FirstSection = "Linguagens"
+SecondSection = "Frameworks"
+ThirdSection = "Ferramentas"
+
+[Frontend]
+Title = "Desenvolvedor Frontend"
+Description = "Descrição para o frontend"
+FirstSection = "Linguagens"
+SecondSection = "Frameworks"
+ThirdSection = "Ferramentas"
+
 [Buttons]
 ContactMe = "Fale Comigo"
 DownloadCv = "Baixar currículo"
