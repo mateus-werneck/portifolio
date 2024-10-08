@@ -119,7 +119,7 @@ func (b *HomePageBuilder) Build() interface{} {
 	data := HomePageData{
 		Intro: HomePageIntro{},
 		LanguageSettings: UserLanguage{
-			ChangeLanguage: "en-US",
+			ChangeLanguage: "pt-BR",
 			LanguageName:   "Inglês",
 			LanguageFlag:   "/static/images/us.svg",
 		},
@@ -128,17 +128,17 @@ func (b *HomePageBuilder) Build() interface{} {
 		Buttons:  HomePageButtons{},
 	}
 
+	if b.Language == "pt-BR" {
+		data.LanguageSettings.ChangeLanguage = "en-US"
+		data.LanguageSettings.LanguageName = "Português"
+		data.LanguageSettings.LanguageFlag = "/static/images/br.svg"
+	}
+
 	data.Title = b.Title
 
 	data.Intro.Title = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Intro.Title"})
 	data.Intro.SubTitle = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Intro.SubTitle"})
 	data.Intro.SubTitleTwo = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Intro.SubTitleTwo"})
-
-	if b.Language == "en-US" {
-		data.LanguageSettings.ChangeLanguage = "pt-BR"
-		data.LanguageSettings.LanguageName = "Português"
-		data.LanguageSettings.LanguageFlag = "/static/images/br.svg"
-	}
 
 	data.Summary.Greeting = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Summary.Greeting"})
 	data.Summary.GreetingTwo = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Summary.GreetingTwo"})

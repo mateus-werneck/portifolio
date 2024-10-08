@@ -698,6 +698,14 @@ video {
   width: 1.25rem;
 }
 
+.w-40 {
+  width: 10rem;
+}
+
+.w-36 {
+  width: 9rem;
+}
+
 .min-w-80 {
   min-width: 20rem;
 }
@@ -1376,6 +1384,10 @@ video {
 
   .md\:w-\[380px\] {
     width: 380px;
+  }
+
+  .md\:w-40 {
+    width: 10rem;
   }
 
   .md\:grid-cols-2 {
