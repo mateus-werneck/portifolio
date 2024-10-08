@@ -54,6 +54,11 @@ Name = "Nome"
 Email = "Email"
 Message = "Escreva sua mensagem"
 
+[Footer]
+Message = "Construindo, aprendendo e evoluindo um pouco de cada vez"
+CreatedBy = "Desenvolvido por Mateus Werneck"
+Copyright = "© 2024 Todos os direitos reservados"
+
 [Buttons]
 ContactMe = "Fale Comigo"
 DownloadCv = "Baixar currículo"

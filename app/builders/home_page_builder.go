@@ -70,6 +70,12 @@ type ShowInterest struct {
 	Description string
 }
 
+type Footer struct {
+	Message   string
+	CreatedBy string
+	Copyright string
+}
+
 type HomePageData struct {
 	Title            string
 	LanguageSettings UserLanguage
@@ -81,6 +87,7 @@ type HomePageData struct {
 	Frontend         Frontend
 	RecentJobs       RecentJobs
 	ShowInterest     ShowInterest
+	Footer           Footer
 }
 
 type HomePageBuilder struct {
@@ -165,6 +172,10 @@ func (b *HomePageBuilder) Build() interface{} {
 
 	data.ShowInterest.Title = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "ShowInterest.Title"})
 	data.ShowInterest.Description = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "ShowInterest.Description"})
+
+	data.Footer.Message = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Footer.Message"})
+	data.Footer.CreatedBy = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Footer.CreatedBy"})
+	data.Footer.Copyright = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Footer.Copyright"})
 
 	data.Buttons.ContactMe = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.ContactMe"})
 	data.Buttons.DownloadCv = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.DownloadCv"})
