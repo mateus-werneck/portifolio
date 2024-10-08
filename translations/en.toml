@@ -25,14 +25,14 @@ SkillFive = "Troubleshooting"
 
 [Backend]
 Title = "Backend Developer"
-Description = "Simple solutions for complex problems."
+Description = "Complex problems require simple solutions."
 FirstSection = "Languages"
 SecondSection = "Frameworks"
 ThirdSection = "Tools"
 
 [Frontend]
 Title = "Frontend Developer"
-Description = "Beautiful and responsive designs."
+Description = "Simple and elegant designs."
 FirstSection = "Languages"
 SecondSection = "Frameworks"
 ThirdSection = "Tools"
