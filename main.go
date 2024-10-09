@@ -27,9 +27,11 @@ func main() {
 	server.Use(gin.Recovery())
 
 	store := storage.NewSessionStore()
+
 	server.Use(sessions.Sessions("guests", store))
 	server.Use(middlewares.LocalizerMiddleware())
-	server.Use(sloggin.NewWithConfig(tools.GlobalLogger, sloggin.Config{
+
+	server.Use(sloggin.NewWithConfig(tools.GinLogger, sloggin.Config{
 		WithRequestBody:    true,
 		WithRequestHeader:  true,
 		WithResponseHeader: true,
@@ -156,7 +158,7 @@ func main() {
 		c.HTML(http.StatusOK, "contact-form.html", gin.H{})
 	})
 
-	tools.GlobalLogger.Debug("Server started", "Port", "9010")
+	tools.GlobalLogger.Info("Server started", "Port", "9010")
 
 	if err := server.Run(":9010"); err != nil {
 		log.Fatalf("Server initialization failed: %v", err)

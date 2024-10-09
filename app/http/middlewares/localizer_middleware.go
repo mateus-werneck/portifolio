@@ -1,6 +1,8 @@
 package middlewares
 
 import (
+	"strings"
+
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 	"github.com/mateus-werneck/portifolio/app/tools"
@@ -16,24 +18,25 @@ func LocalizerMiddleware() gin.HandlerFunc {
 		localizer := i18n.NewLocalizer(bundle, language.BrazilianPortuguese.String())
 
 		lang := c.GetHeader("Accept-Language")
+		langParts := strings.Split(lang, ",")
 
-		if lang == "" {
-			lang = "pt-BR"
+		langName := langParts[0]
+
+		if langName == "" {
+			langName = "pt-BR"
 		}
 
 		if sessionLang := session.Get("user-lang"); sessionLang != nil {
-			lang = sessionLang.(string)
+			langName = sessionLang.(string)
 		}
 
-		if lang == "en-US" {
+		if langName == "en-US" {
 			localizer = i18n.NewLocalizer(bundle, language.English.String())
 		}
 
-		session.Set("user-lang", lang)
+		session.Set("user-lang", langName)
 		session.Save()
 
 		c.Set("localizer", localizer)
-
-		c.Next()
 	}
 }
