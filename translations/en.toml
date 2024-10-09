@@ -1,15 +1,21 @@
 [Intro]
 Title = "Tech Lead & Software Engineer"
 SubTitle = "Intelligent, elegant and efficient solutions"
-SubTitleTwo = "for solving problems."
+SubTitleTwo = "for problem solving."
 
 [Summary]
 Greeting = "Hi, I'm Mateus."
-GreetingTwo = "It's a pleasure having you here."
-Paragraph = """
-    Desde o início da minha carreira como desenvolvedor sempre fui apaixonado por descobrir e criar ferramentas novas.
-    Tive minha primeira imersão na área há 5 anos atrás e desde então pude colaborar com profissionais e talentos de todos os tipos.
-    Participei ativamente na criação de produtos digitais e na melhoria constante de processos internos.
+GreetingTwo = "It's a pleasure to meet you."
+ParagraphOne = """
+    I've started my journey as a Software Engineer 5 years ago and since then I've been able to colaborate
+    with inumerous talented people.
+"""
+ParagraphTwo = """
+    I've always been fascinated about learning and creating tools with positive impacts on people's lives.
+"""
+ParagraphThree = """
+    I'm proud to have created inovative digital products from the ground up, as well as improving existing
+    internal processes.
 """
 
 [TechLead]
@@ -55,7 +61,7 @@ Email = "Email"
 Message = "Write your message."
 
 [Footer]
-Message = "Building, learning and getting better a little bit each day"
+Message = "Building, learning and getting better each day."
 CreatedBy = "Developed by Mateus Werneck"
 Copyright = "© 2024 All rights reserved"
 

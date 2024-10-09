@@ -12,9 +12,11 @@ type HomePageIntro struct {
 }
 
 type HomePageSummary struct {
-	Greeting    string
-	GreetingTwo string
-	Paragraph   string
+	Greeting       string
+	GreetingTwo    string
+	ParagraphOne   string
+	ParagraphTwo   string
+	ParagraphThree string
 }
 
 type HomePageButtons struct {
@@ -142,7 +144,9 @@ func (b *HomePageBuilder) Build() interface{} {
 
 	data.Summary.Greeting = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Summary.Greeting"})
 	data.Summary.GreetingTwo = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Summary.GreetingTwo"})
-	data.Summary.Paragraph = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Summary.Paragraph"})
+	data.Summary.ParagraphOne = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Summary.ParagraphOne"})
+	data.Summary.ParagraphTwo = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Summary.ParagraphTwo"})
+	data.Summary.ParagraphThree = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Summary.ParagraphThree"})
 
 	data.TechLead.Title = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "TechLead.Title"})
 	data.TechLead.Description = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "TechLead.Description"})

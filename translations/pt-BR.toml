@@ -6,10 +6,17 @@ SubTitleTwo = "inteligente, elegante e eficaz."
 [Summary]
 Greeting = "Olá, meu nome é Mateus."
 GreetingTwo = "É um prazer recebé-lo aqui."
-Paragraph = """
-    Desde o início da minha carreira como desenvolvedor sempre fui apaixonado por descobrir e criar ferramentas novas.
-    Tive minha primeira imersão na área há 5 anos atrás e desde então pude colaborar com profissionais e talentos de todos os tipos.
-    Participei ativamente na criação de produtos digitais e na melhoria constante de processos internos.
+ParagraphOne = """
+   Comecei a trilhar meu caminho como Desenvolvedor de Software há 5 anos e desde então tive a oportunidade
+   de colaborar com talentos de todos os tipos.
+"""
+ParagraphTwo = """
+    Sempre fui apaixonado pela possibilidade de aprender e construir ferramentas que pudessem ter um impacto
+    positivo na vida das pessoas.
+"""
+ParagraphThree = """
+    Tenho muito orgulho de ter criado produtos inovadores do zero, além de ter participado ativamente
+    na transformação de processos internos das empresas onde estive.
 """
 
 [TechLead]
