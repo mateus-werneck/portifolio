@@ -1,0 +1,88 @@
+package routes
+
+import (
+	"net/http"
+	"os"
+	"strconv"
+
+	"github.com/gin-contrib/sessions"
+	"github.com/gin-gonic/gin"
+	"github.com/go-playground/validator/v10"
+	"github.com/mateus-werneck/portifolio/app/tools"
+	"github.com/mateus-werneck/portifolio/app/types"
+	"github.com/nicksnyder/go-i18n/v2/i18n"
+	"gopkg.in/mail.v2"
+)
+
+func contact(server *gin.Engine) {
+	server.GET("/contact", func(c *gin.Context) {
+		localizer := c.MustGet("localizer").(*i18n.Localizer)
+		c.HTML(http.StatusOK, "contact.html", gin.H{
+			"FormTitle":       localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Contact.Title"}),
+			"FormDescription": localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Contact.Description"}),
+			"ContactFields": map[string]string{
+				"Name":    localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "ContactFields.Name"}),
+				"Email":   localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "ContactFields.Email"}),
+				"Message": localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "ContactFields.Message"}),
+			},
+		})
+	})
+
+	server.POST("/contact", func(c *gin.Context) {
+		var validationErrors validator.ValidationErrors
+		var formData types.ContactEmail
+
+		err := c.ShouldBind(&formData)
+		if err != nil {
+			validationErrors = err.(validator.ValidationErrors)
+		}
+
+		formData.Errors = map[string]string{}
+
+		for _, field := range validationErrors {
+			formData.Errors[field.Field()] = field.Translate(tools.Translator)
+		}
+
+		if len(formData.Errors) > 0 {
+			c.HTML(http.StatusBadRequest, "contact-form.html", formData)
+			return
+		}
+
+		session := sessions.Default(c)
+		qtdEmails := 0
+
+		if qtd := session.Get(formData.Sender); qtd != nil {
+			qtdEmails = qtd.(int)
+		}
+
+		if qtdEmails == 0 {
+			session.Set(formData.Sender, qtdEmails+1)
+			session.Save()
+		}
+
+		if qtdEmails >= 10 {
+			c.HTML(http.StatusBadRequest, "contact-.html", gin.H{
+				"errors": []string{"Limite de emails atingido."},
+			})
+			return
+		}
+
+		email := mail.NewMessage()
+		email.SetHeader("From", formData.Sender)
+		email.SetHeader("To", "werneck.mateus@gmail.com", "werneck.mateus@protonmail.com")
+		email.SetHeader("Subject", "Me interessei no seu perfil - Mateus Werneck")
+		email.SetBody("text/plain", formData.Body)
+
+		port, _ := strconv.Atoi(os.Getenv("SMTP_PORT"))
+		d := mail.NewDialer(os.Getenv("SMTP_HOST"), port, os.Getenv("SMTP_USER"), os.Getenv("SMTP_PASS"))
+
+		err = d.DialAndSend(email)
+		if err != nil {
+			tools.GlobalLogger.Error("SMTP sendEmail failed", "error", err)
+			c.HTML(http.StatusBadRequest, "contact-form.html", gin.H{})
+			return
+		}
+
+		c.HTML(http.StatusOK, "contact-form.html", gin.H{})
+	})
+}
