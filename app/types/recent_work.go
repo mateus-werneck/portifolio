@@ -1,5 +1,7 @@
 package types
 
+import "github.com/nicksnyder/go-i18n/v2/i18n"
+
 type RecentWork struct {
 	Element     string
 	Image       string
@@ -31,4 +33,9 @@ func RecentWorks() map[string]RecentWork {
 
 func FindWork(name string) RecentWork {
 	return works[name]
+}
+
+func (w *RecentWork) Desc(localizer *i18n.Localizer) string {
+	messageId := "RecentJobs." + w.Element
+	return localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: messageId})
 }

@@ -8,13 +8,13 @@ Greeting = "Hi, I'm Mateus."
 GreetingTwo = "It's a pleasure to meet you."
 ParagraphOne = """
     I've started my journey as a Software Engineer 5 years ago and since then I've been able to colaborate
-    with inumerous talented people.
+    with many talented people.
 """
 ParagraphTwo = """
     I've always been fascinated about learning and creating tools with positive impacts on people's lives.
 """
 ParagraphThree = """
-    I'm proud to have created inovative digital products from the ground up, as well as improving existing
+    I'm proud to have created inovative digital products from the ground up as well as improving existing
     internal processes.
 """
 
@@ -46,6 +46,8 @@ ThirdSection = "Tools"
 [RecentJobs]
 Title = "Recent Work"
 Description = "I'm proud to have collaborated with companies from the future."
+celcoin = "Financial infratech to boost businesses"
+symplicity = "Streamline system-wide opportunities and increase student engagement"
 
 [ShowInterest]
 Title = "Peaked your interest?"

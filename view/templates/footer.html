@@ -1,11 +1,13 @@
 </main>
-<footer id="footer" class="w-full flex flex-col items-center justify-center gap-8 bg-cyan-700 text-white pt-16 pb-4 mt-16">
+<footer id="footer"
+    class="w-full flex flex-col items-center justify-center gap-8 bg-cyan-700 text-white pt-16 pb-4 mt-16">
     <div class="flex flex-col items-center self-center p-4">
-        <img src="/static/images/logo.svg" class="w-48"/>
-
-        <p class="flex flex-col p-4 w-72 md:w-[340px] text-center break-words text-md md:text-xl text-slate-200">
+        <a href="/">
+            <img src="/static/images/logo.svg" class="w-48" />
+        </a>
+        <!-- <p class="flex flex-col p-4 w-72 md:w-[340px] text-center break-words text-md md:text-xl text-slate-200">
                {{.Footer.Message}}
-        </p>
+        </p> -->
     </div>
     <nav class="flex gap-4 p-4">
         <a class="bg-white rounded-full border-2 border-slate-400 p-3 filter-brightness-[100]
@@ -26,21 +28,21 @@
     </nav>
 
     <div class="flex flex-col p-4 w-80 text-center">
-           <span class="text-sm">{{.Footer.CreatedBy}}</span>
-           <span class="text-xs">{{.Footer.Copyright}}</span>
+        <span class="text-sm">{{.Footer.CreatedBy}}</span>
+        <span class="text-xs">{{.Footer.Copyright}}</span>
     </div>
 
     <div class="flex flex-col items-center self-center gap-2 text-slate-200">
         <span class="text-xs">Made with</span>
         <div class="flex flex-row gap-4 items-center text-center text-sm md:text-lg">
             <a href="https://go.dev/" target="_blank">
-                <img src="/static/images/go-logo.svg" class="w-5 brightness-90"/>
+                <img src="/static/images/go-logo.svg" class="w-5 brightness-90" />
             </a>
             <a class="text-sm font-semibold" href="https://htmx.org/" target="_blank">
                 </> htmx
             </a>
             <a class="flex flex-row gap-1" href="https://tailwindcss.com/" target="_blank">
-                <img src="/static/images/tailwind-logo.svg" class="w-5"/>
+                <img src="/static/images/tailwind-logo.svg" class="w-5" />
                 <span class="font-semibold text-sm">tailwindcss</span>
             </a>
         </div>

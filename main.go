@@ -91,7 +91,7 @@ func main() {
 
 		c.HTML(http.StatusOK, "logo-summary.html", gin.H{
 			"Element":     work.Element,
-			"Description": work.Description,
+			"Description": work.Desc(localizer),
 			"Website":     work.Website,
 			"Buttons": builders.HomePageButtons{
 				Visit: localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.Visit"}),

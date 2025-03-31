@@ -1,21 +1,11 @@
-<div
-    id="{{.Element}}-animation"
-    class="flex flex-col gap-8 w-96 h-64 rounded-xl p-8 justify-center items-center transition ease-in duration-300 bg-purple-100"
-    hx-trigger="click, mouseleave once"
-    hx-swap="innerHTML"
-    hx-target="#{{.Element}}"
-    hx-get="/recent-work/logo/{{.Element}}"
->
+<div id="{{.Element}}-animation"
+    class="flex flex-col gap-8 w-80 md:w-96 h-64 rounded-xl p-8 justify-center items-center transition ease-in duration-300 bg-purple-100"
+    hx-trigger="click, mouseleave once" hx-swap="innerHTML" hx-target="#{{.Element}}"
+    hx-get="/recent-work/logo/{{.Element}}">
     <p class="text-white text-lg font-bold">{{.Description}}</p>
-    <a
-        class="flex gap-2 items-center text-center text-white py-2 px-8 rounded-3xl border-solid border-4 border-violet-400 hover:bg-violet-400 transition delay-75 duration-300 ease-in-out"
-        href="{{.Website}}"
-        target="_blank"
-    >
+    <a class="flex gap-2 items-center text-center text-white py-2 px-8 rounded-3xl border-solid border-4 border-violet-400 hover:bg-violet-400 transition delay-75 duration-300 ease-in-out"
+        href="{{.Website}}" target="_blank">
         <span>{{.Buttons.Visit}}</span>
-        <img
-            src="/static/images/greater.svg"
-            class="w-[10px] h-[10px] filter invert"
-        />
+        <img src="/static/images/greater.svg" class="w-[10px] h-[10px] filter invert" />
     </a>
 </div>
