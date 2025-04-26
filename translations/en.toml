@@ -73,3 +73,7 @@ DownloadCv = "Download Resume"
 LearnMore = "Learn More"
 Visit = "Visit Website"
 Proposal = "Make an offer"
+
+[Errors]
+EmailLimit = "You've reached your email quota for today."
+SendEmail = "Email couldn't be sent. Try again, later."

@@ -76,7 +76,7 @@ func contact(server *gin.Engine) {
 		}
 
 		if qtdEmails >= 10 {
-			response["Error"] = "Limite de emails excedido."
+			response["Error"] = localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Errors.EmailLimit"})
 			c.HTML(http.StatusBadRequest, "contact.html", response)
 			return
 		}
@@ -95,7 +95,7 @@ func contact(server *gin.Engine) {
 		if err != nil {
 			tools.GlobalLogger.Error("SMTP sendEmail failed", "error", err)
 
-			response["Error"] = "Falha ao enviar email. Por favor, tente novamente mais tarde."
+			response["Error"] = localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Errors.SendEmail"})
 
 			c.HTML(http.StatusBadRequest, "contact-form.html", response)
 

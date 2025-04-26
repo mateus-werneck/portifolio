@@ -32,6 +32,11 @@ func LocalizerMiddleware() gin.HandlerFunc {
 
 		if langName == "en-US" {
 			localizer = i18n.NewLocalizer(bundle, language.English.String())
+			tools.SetEnTransalator()
+		}
+
+		if langName == "pt-BR" {
+			tools.SetPtBrTransaltor()
 		}
 
 		session.Set("user-lang", langName)

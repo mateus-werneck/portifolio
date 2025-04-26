@@ -6,6 +6,7 @@ import (
 	pt "github.com/go-playground/locales/pt_BR"
 	ut "github.com/go-playground/universal-translator"
 	"github.com/go-playground/validator/v10"
+	en_translations "github.com/go-playground/validator/v10/translations/en"
 	"github.com/go-playground/validator/v10/translations/pt_BR"
 	"github.com/nicksnyder/go-i18n/v2/i18n"
 	"github.com/pelletier/go-toml/v2"
@@ -17,10 +18,24 @@ var Translator ut.Translator
 
 func init() {
 	Bundle = NewLanguageBundle()
-	Translator = NewTranslator()
+	SetPtBrTransaltor()
 }
 
-func NewTranslator() ut.Translator {
+func SetEnTransalator() {
+	pt := pt.New()
+	en := en.New()
+
+	uni := ut.New(pt, pt, en)
+	trans, _ := uni.GetTranslator("en_US")
+
+	if v, ok := binding.Validator.Engine().(*validator.Validate); ok {
+		en_translations.RegisterDefaultTranslations(v, trans)
+	}
+
+	Translator = trans
+}
+
+func SetPtBrTransaltor() {
 	pt := pt.New()
 	en := en.New()
 
@@ -31,7 +46,7 @@ func NewTranslator() ut.Translator {
 		pt_BR.RegisterDefaultTranslations(v, trans)
 	}
 
-	return trans
+	Translator = trans
 }
 
 func NewLanguageBundle() *i18n.Bundle {

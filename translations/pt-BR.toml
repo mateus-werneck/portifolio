@@ -75,3 +75,7 @@ LearnMore = "Ver mais"
 Visit = "Visitar site"
 Proposal = "Iniciar uma proposta"
 BackButton = "x"
+
+[Errors]
+EmailLimit = "Limite de emails por dia excedido."
+SendEmail = "Não consegui enviar o email. Por favor, tente novamente mais tarde."
