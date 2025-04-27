@@ -36,7 +36,7 @@ func LocalizerMiddleware() gin.HandlerFunc {
 		}
 
 		if langName == "pt-BR" {
-			tools.SetPtBrTransaltor()
+			// tools.SetPtBrTransaltor()
 		}
 
 		session.Set("user-lang", langName)

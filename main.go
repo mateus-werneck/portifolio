@@ -35,9 +35,9 @@ func main() {
 
 	routes.AppendRoutes(server)
 
-	if err := server.Run(":9010"); err != nil {
+	if err := server.Run(":2053"); err != nil {
 		log.Fatalf("Server initialization failed: %v", err)
 	}
 
-	tools.GlobalLogger.Info("Server started", "Port", "9010")
+	tools.GlobalLogger.Info("Server started", "Port", "2053")
 }
