@@ -21,7 +21,7 @@ ParagraphThree = """
 
 [TechLead]
 Title = "Líder Técnico"
-Description = "Trabalho em equipe e dedicaçao são essenciais."
+Desc = "Trabalho em equipe e dedicaçao são essenciais."
 FirstSection = "Ferramentas"
 SecondSection = "Habilidades"
 SkillOne = "Planejamento"
@@ -32,31 +32,31 @@ SkillFive = "Resolução de Problemas"
 
 [Backend]
 Title = "Desenvolvedor Backend"
-Description = "Problemas complexos exigem soluções simples."
+Desc = "Problemas complexos exigem soluções simples."
 FirstSection = "Linguagens"
 SecondSection = "Frameworks"
 ThirdSection = "Ferramentas"
 
 [Frontend]
 Title = "Desenvolvedor Frontend"
-Description = "Designs simples e elegantes."
+Desc = "Designs simples e elegantes."
 FirstSection = "Linguagens"
 SecondSection = "Frameworks"
 ThirdSection = "Ferramentas"
 
 [RecentJobs]
 Title = "Trabalhos Recentes"
-Description = "Tenho muito orgulho de ter contribuido com empresas do futuro."
+Desc = "Tenho muito orgulho de ter contribuido com empresas do futuro."
 celcoin = "Infratech financeira para potencializar negócios"
 symplicity = "Torne o sucesso do seu aluno no mercado de trabalho um dos pilares da sua instituição"
 
 [ShowInterest]
 Title = "Tem interesse em colaborar?"
-Description = "Estou sempre aberto para discutir novas ideias e propostas."
+Desc = "Estou sempre aberto para discutir novas ideias e propostas."
 
 [Contact]
 Title = "Obrigado pela paciência."
-Description = "Me conte como posso ajudar."
+Desc = "Me conte como posso ajudar."
 
 [ContactFields]
 Name = "Nome"

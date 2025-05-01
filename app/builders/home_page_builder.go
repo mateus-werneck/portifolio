@@ -149,7 +149,7 @@ func (b *HomePageBuilder) Build() interface{} {
 	data.Summary.ParagraphThree = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Summary.ParagraphThree"})
 
 	data.TechLead.Title = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "TechLead.Title"})
-	data.TechLead.Description = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "TechLead.Description"})
+	data.TechLead.Description = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "TechLead.Desc"})
 	data.TechLead.FirstSection = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "TechLead.FirstSection"})
 	data.TechLead.SecondSection = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "TechLead.SecondSection"})
 	data.TechLead.SkillOne = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "TechLead.SkillOne"})
@@ -159,23 +159,23 @@ func (b *HomePageBuilder) Build() interface{} {
 	data.TechLead.SkillFive = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "TechLead.SkillFive"})
 
 	data.Backend.Title = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Backend.Title"})
-	data.Backend.Description = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Backend.Description"})
+	data.Backend.Description = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Backend.Desc"})
 	data.Backend.FirstSection = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Backend.FirstSection"})
 	data.Backend.SecondSection = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Backend.SecondSection"})
 	data.Backend.ThirdSection = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Backend.ThirdSection"})
 
 	data.Frontend.Title = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Frontend.Title"})
-	data.Frontend.Description = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Frontend.Description"})
+	data.Frontend.Description = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Frontend.Desc"})
 	data.Frontend.FirstSection = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Frontend.FirstSection"})
 	data.Frontend.SecondSection = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Frontend.SecondSection"})
 	data.Frontend.ThirdSection = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Frontend.ThirdSection"})
 
 	data.RecentJobs.Title = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "RecentJobs.Title"})
-	data.RecentJobs.Description = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "RecentJobs.Description"})
+	data.RecentJobs.Description = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "RecentJobs.Desc"})
 	data.RecentJobs.Jobs = types.RecentWorks()
 
 	data.ShowInterest.Title = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "ShowInterest.Title"})
-	data.ShowInterest.Description = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "ShowInterest.Description"})
+	data.ShowInterest.Description = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "ShowInterest.Desc"})
 
 	data.Footer.Message = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Footer.Message"})
 	data.Footer.CreatedBy = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Footer.CreatedBy"})

@@ -19,7 +19,7 @@ func contact(server *gin.Engine) {
 		localizer := c.MustGet("localizer").(*i18n.Localizer)
 		c.HTML(http.StatusOK, "contact.html", gin.H{
 			"FormTitle":       localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Contact.Title"}),
-			"FormDescription": localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Contact.Description"}),
+			"FormDescription": localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Contact.Desc"}),
 			"ContactFields": map[string]string{
 				"Name":    localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "ContactFields.Name"}),
 				"Email":   localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "ContactFields.Email"}),
@@ -35,7 +35,6 @@ func contact(server *gin.Engine) {
 		localizer := c.MustGet("localizer").(*i18n.Localizer)
 
 		err := c.ShouldBind(&formData)
-
 		if err != nil {
 			validationErrors = err.(validator.ValidationErrors)
 		}
@@ -91,7 +90,6 @@ func contact(server *gin.Engine) {
 		d := mail.NewDialer(os.Getenv("SMTP_HOST"), port, os.Getenv("SMTP_USER"), os.Getenv("SMTP_PASS"))
 
 		err = d.DialAndSend(email)
-
 		if err != nil {
 			tools.GlobalLogger.Error("SMTP sendEmail failed", "error", err)
 

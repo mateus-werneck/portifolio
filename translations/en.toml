@@ -20,7 +20,7 @@ ParagraphThree = """
 
 [TechLead]
 Title = "Tech Lead"
-Description = "Teamwork and dedication are fundamental."
+Desc = "Teamwork and dedication are fundamental."
 FirstSection = "Tools"
 SecondSection = "Skills"
 SkillOne = "Planning"
@@ -31,31 +31,31 @@ SkillFive = "Troubleshooting"
 
 [Backend]
 Title = "Backend Developer"
-Description = "Complex problems require simple solutions."
+Desc = "Complex problems require simple solutions."
 FirstSection = "Languages"
 SecondSection = "Frameworks"
 ThirdSection = "Tools"
 
 [Frontend]
 Title = "Frontend Developer"
-Description = "Simple and elegant designs."
+Desc = "Simple and elegant designs."
 FirstSection = "Languages"
 SecondSection = "Frameworks"
 ThirdSection = "Tools"
 
 [RecentJobs]
 Title = "Recent Work"
-Description = "I'm proud to have collaborated with companies from the future."
+Desc = "I'm proud to have collaborated with companies from the future."
 celcoin = "Financial infratech to boost businesses"
 symplicity = "Streamline system-wide opportunities and increase student engagement"
 
 [ShowInterest]
 Title = "Peaked your interest?"
-Description = "I'm always excited to discuss new ideias."
+Desc = "I'm always excited to discuss new ideias."
 
 [Contact]
 Title = "Thank you for reaching out."
-Description = "How can I help you?"
+Desc = "How can I help you?"
 
 [ContactFields]
 Name = "Name"
