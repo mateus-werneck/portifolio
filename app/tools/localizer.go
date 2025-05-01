@@ -13,8 +13,10 @@ import (
 	"golang.org/x/text/language"
 )
 
-var Bundle *i18n.Bundle
-var Translator ut.Translator
+var (
+	Bundle     *i18n.Bundle
+	Translator ut.Translator
+)
 
 func init() {
 	Bundle = NewLanguageBundle()
