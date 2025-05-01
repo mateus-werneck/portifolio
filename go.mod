@@ -5,7 +5,6 @@ go 1.23.0
 require (
 	github.com/gin-contrib/sessions v1.0.1
 	github.com/gin-gonic/gin v1.10.0
-	github.com/go-mail/mail v2.3.1+incompatible
 	github.com/go-playground/locales v0.14.1
 	github.com/go-playground/universal-translator v0.18.1
 	github.com/go-playground/validator/v10 v10.22.0
@@ -15,6 +14,7 @@ require (
 	github.com/redis/go-redis/v9 v9.6.1
 	github.com/samber/slog-gin v1.13.5
 	golang.org/x/text v0.16.0
+	gopkg.in/mail.v2 v2.3.1
 )
 
 require (
@@ -49,6 +49,5 @@ require (
 	golang.org/x/sys v0.21.0 // indirect
 	google.golang.org/protobuf v1.34.2 // indirect
 	gopkg.in/alexcesaro/quotedprintable.v3 v3.0.0-20150716171945-2caba252f4dc // indirect
-	gopkg.in/mail.v2 v2.3.1 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
