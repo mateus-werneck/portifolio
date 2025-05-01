@@ -1,7 +1,10 @@
 node_modules/
 tmp/
 .env
+.env.prod
+.env.local
 redis-data/
 vendor/
+build/
 *.rdb
 *.log

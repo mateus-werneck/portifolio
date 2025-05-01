@@ -1,19 +1,29 @@
+networks:
+  go-portifolio-network:
+
 services:
-  portfolio:
-    image: golang:1.24.2
+  portifolio:
+    build: 
+      context: .
     container_name: portifolio
-    restart: always 
+    restart: always
     ports:
-      - 2053:2053 
+      - 2053:2053
+    depends_on:
+      - portdb
+    networks:
+      - go-portifolio-network
   portdb:
     image: redis:6.2-alpine
     container_name: portdb
     restart: always
     ports:
       - 6378:6379
-    env_file: .env
+    env_file: .env.prod
     volumes:
       - ./redis-data:/data
+    networks:
+      - go-portifolio-network
     command:
       - /bin/sh
       - -c
