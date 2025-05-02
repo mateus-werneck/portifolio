@@ -39,7 +39,7 @@ ThirdSection = "Ferramentas"
 
 [Frontend]
 Title = "Desenvolvedor Frontend"
-Desc = "Designs simples e elegantes."
+Desc = "Designs simples, elegantes e intuitivos."
 FirstSection = "Linguagens"
 SecondSection = "Frameworks"
 ThirdSection = "Ferramentas"
@@ -70,7 +70,8 @@ Copyright = "© 2024 Todos os direitos reservados"
 
 [Buttons]
 ContactMe = "Fale Comigo"
-DownloadCv = "Baixar currículo"
+DownloadCv = "Visualizar currículo"
+CvFileName = "/static/files/Mateus Werneck.pdf"
 LearnMore = "Ver mais"
 Visit = "Visitar site"
 Proposal = "Iniciar uma proposta"

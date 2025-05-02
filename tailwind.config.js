@@ -13,6 +13,18 @@ export default {
         sourcesans: ["'Source Sans 3'", "Inter"],
         jetbrains: ["'JetBrains Mono'", "Inter"],
       },
+     colors: {
+         "primary-color": "#2f4f4f",
+         "secondary-color": "#A1452D",
+         "title-color": "#9CB3A3",
+         "sub-title-color": "#897B30",
+         "button-text-color": "#9CB3A3",
+         "button-border-color": "#897B30"
+     },
+    backgroundColor: {
+        "primary-color": "#2f4f4f",
+        "button-hover": "#A1452D"
+    },
     },
   },
   plugins: [],

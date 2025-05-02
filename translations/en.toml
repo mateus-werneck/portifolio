@@ -38,7 +38,7 @@ ThirdSection = "Tools"
 
 [Frontend]
 Title = "Frontend Developer"
-Desc = "Simple and elegant designs."
+Desc = "Simple, intuitive and elegant designs."
 FirstSection = "Languages"
 SecondSection = "Frameworks"
 ThirdSection = "Tools"
@@ -69,7 +69,8 @@ Copyright = "© 2024 All rights reserved"
 
 [Buttons]
 ContactMe = "Say Hello"
-DownloadCv = "Download Resume"
+DownloadCv = "Show Resume"
+CvFileName = "/static/files/Mateus Werneck.pdf"
 LearnMore = "Learn More"
 Visit = "Visit Website"
 Proposal = "Make an offer"

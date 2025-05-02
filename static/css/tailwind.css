@@ -622,10 +622,6 @@ video {
   width: 0.5rem;
 }
 
-.w-40 {
-  width: 10rem;
-}
-
 .w-48 {
   width: 12rem;
 }
@@ -652,10 +648,6 @@ video {
 
 .w-80 {
   width: 20rem;
-}
-
-.w-96 {
-  width: 24rem;
 }
 
 .w-\[10px\] {
@@ -790,9 +782,14 @@ video {
   border-style: solid;
 }
 
-.border-cyan-600 {
+.border-button-border-color {
   --tw-border-opacity: 1;
-  border-color: rgb(8 145 178 / var(--tw-border-opacity));
+  border-color: rgb(137 123 48 / var(--tw-border-opacity));
+}
+
+.border-primary-color {
+  --tw-border-opacity: 1;
+  border-color: rgb(47 79 79 / var(--tw-border-opacity));
 }
 
 .border-slate-100 {
@@ -815,14 +812,9 @@ video {
   border-color: rgb(167 139 250 / var(--tw-border-opacity));
 }
 
-.bg-cyan-600 {
+.bg-primary-color {
   --tw-bg-opacity: 1;
-  background-color: rgb(8 145 178 / var(--tw-bg-opacity));
-}
-
-.bg-cyan-700 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(14 116 144 / var(--tw-bg-opacity));
+  background-color: rgb(47 79 79 / var(--tw-bg-opacity));
 }
 
 .bg-purple-100 {
@@ -852,6 +844,21 @@ video {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.bg-secondary-color {
+  --tw-bg-opacity: 1;
+  background-color: rgb(161 69 45 / var(--tw-bg-opacity));
+}
+
+.bg-title-color {
+  --tw-bg-opacity: 1;
+  background-color: rgb(156 179 163 / var(--tw-bg-opacity));
+}
+
+.bg-button-hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(161 69 45 / var(--tw-bg-opacity));
 }
 
 .p-2 {
@@ -920,10 +927,6 @@ video {
   padding-left: 0.5rem;
 }
 
-.pr-16 {
-  padding-right: 4rem;
-}
-
 .pt-16 {
   padding-top: 4rem;
 }
@@ -952,10 +955,6 @@ video {
   text-indent: 0.5rem;
 }
 
-.font-jetbrains {
-  font-family: 'JetBrains Mono', Inter;
-}
-
 .font-inter {
   font-family: Inter, sans-serif;
 }
@@ -968,11 +967,6 @@ video {
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
-}
-
-.text-4xl {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
 }
 
 .text-lg {
@@ -1015,24 +1009,24 @@ video {
   line-height: 1.5rem;
 }
 
-.text-black {
-  --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity));
-}
-
 .text-blue-950 {
   --tw-text-opacity: 1;
   color: rgb(23 37 84 / var(--tw-text-opacity));
 }
 
-.text-cyan-600 {
+.text-button-text-color {
   --tw-text-opacity: 1;
-  color: rgb(8 145 178 / var(--tw-text-opacity));
+  color: rgb(156 179 163 / var(--tw-text-opacity));
 }
 
 .text-emerald-600 {
   --tw-text-opacity: 1;
   color: rgb(5 150 105 / var(--tw-text-opacity));
+}
+
+.text-primary-color {
+  --tw-text-opacity: 1;
+  color: rgb(47 79 79 / var(--tw-text-opacity));
 }
 
 .text-red-500 {
@@ -1065,9 +1059,14 @@ video {
   color: rgb(30 41 59 / var(--tw-text-opacity));
 }
 
-.text-slate-900 {
+.text-sub-title-color {
   --tw-text-opacity: 1;
-  color: rgb(15 23 42 / var(--tw-text-opacity));
+  color: rgb(137 123 48 / var(--tw-text-opacity));
+}
+
+.text-title-color {
+  --tw-text-opacity: 1;
+  color: rgb(156 179 163 / var(--tw-text-opacity));
 }
 
 .text-white {
@@ -1126,6 +1125,10 @@ video {
   transition-duration: 300ms;
 }
 
+.duration-700 {
+  transition-duration: 700ms;
+}
+
 .ease-in {
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
 }
@@ -1144,9 +1147,14 @@ video {
   border-color: rgb(255 255 255 / var(--tw-border-opacity));
 }
 
-.hover\:bg-cyan-600:hover {
+.hover\:bg-button-hover:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(8 145 178 / var(--tw-bg-opacity));
+  background-color: rgb(161 69 45 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-primary-color:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(47 79 79 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-slate-200:hover {
@@ -1186,11 +1194,6 @@ video {
 
 .hover\:brightness-150:hover {
   --tw-brightness: brightness(1.5);
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}
-
-.hover\:brightness-90:hover {
-  --tw-brightness: brightness(.9);
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
@@ -1283,6 +1286,11 @@ video {
     line-height: 2.25rem;
   }
 
+  .md\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
   .md\:text-5xl {
     font-size: 3rem;
     line-height: 1;
@@ -1296,10 +1304,5 @@ video {
   .md\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
-  }
-
-  .md\:text-4xl {
-    font-size: 2.25rem;
-    line-height: 2.5rem;
   }
 }

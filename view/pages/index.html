@@ -7,16 +7,15 @@
     </div>
 
    <div id="header-actions" class="flex flex-5 gap-4 md:gap-8">
-       <a class="hidden md:flex break-keep px-4 py-2 self-center text-center font-normal text-cyan-600 bg-transperent outline-none border-2 border-cyan-600 rounded-3xl
-           hover:bg-cyan-600 hover:text-white transition delay-75 duration-300 ease-in-out" href="/contact">
+       <a class="hidden md:flex break-keep px-4 py-2 self-center text-center font-normal text-button-text-color bg-transperent outline-none border-2 border-button-border-color rounded-3xl
+           hover:bg-button-hover hover:text-white transition delay-75 duration-300 ease-in-out" href="/contact" alt="contact-me-button" title="{{.Buttons.ContactMe}}">
            {{.Buttons.ContactMe}}
        </a>
        <button
            class="flex gap-2 items-center hover:filter hover:brightness-110 hover:text-slate-600"
            hx-post="/language/{{.LanguageSettings.ChangeLanguage}}"
         >
-                  <img src="{{.LanguageSettings.LanguageFlag}}" class="w-8"/>
-                  <span>{{.LanguageSettings.LanguageName}}</span>
+        <img src="{{.LanguageSettings.LanguageFlag}}" class="w-8" alt="{{.LanguageSettings.LanguageName}}" title="{{.LanguageSettings.LanguageName}}"/>
         <button/>
    </div>
 </nav>
