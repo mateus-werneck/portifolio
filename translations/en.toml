@@ -70,7 +70,7 @@ Copyright = "© 2024 All rights reserved"
 [Buttons]
 ContactMe = "Say Hello"
 DownloadCv = "Show Resume"
-CvFileName = "/static/files/Mateus Werneck.pdf"
+CvFileName = "/static/files/Mateus Werneck - EN.pdf"
 LearnMore = "Learn More"
 Visit = "Visit Website"
 Proposal = "Make an offer"

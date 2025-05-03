@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"os"
 
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
@@ -35,9 +36,11 @@ func main() {
 
 	routes.AppendRoutes(server)
 
-	if err := server.Run(":2053"); err != nil {
+	port := ":" + os.Getenv("PORT")
+
+	if err := server.Run(port); err != nil {
 		log.Fatalf("Server initialization failed: %v", err)
 	}
 
-	tools.GlobalLogger.Info("Server started", "Port", "2053")
+	tools.GlobalLogger.Info("Server started", "Port", port)
 }
