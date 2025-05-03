@@ -22,9 +22,11 @@ type HomePageSummary struct {
 type HomePageButtons struct {
 	ContactMe  string
 	DownloadCv string
+	CvFileName string
 	LearnMore  string
 	Visit      string
 	Proposal   string
+	Submit     string
 }
 
 type UserLanguage struct {
@@ -122,7 +124,7 @@ func (b *HomePageBuilder) Build() interface{} {
 		Intro: HomePageIntro{},
 		LanguageSettings: UserLanguage{
 			ChangeLanguage: "pt-BR",
-			LanguageName:   "Inglês",
+			LanguageName:   "English",
 			LanguageFlag:   "/static/images/us.svg",
 		},
 		Summary:  HomePageSummary{},
@@ -183,9 +185,11 @@ func (b *HomePageBuilder) Build() interface{} {
 
 	data.Buttons.ContactMe = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.ContactMe"})
 	data.Buttons.DownloadCv = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.DownloadCv"})
+	data.Buttons.CvFileName = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.CvFileName"})
 	data.Buttons.LearnMore = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.LearnMore"})
 	data.Buttons.Visit = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.Visit"})
 	data.Buttons.Proposal = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.Proposal"})
+	data.Buttons.Submit = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.Submit"})
 
 	return data
 }

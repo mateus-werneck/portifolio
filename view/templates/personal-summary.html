@@ -1,15 +1,15 @@
 <div class="flex flex-col pb-8" id="summary-desc">
-    <div class="w-full h-[684px] flex flex-col items-center pt-32 px-4 gap-6 md:gap-8 bg-cyan-600 text-white"
+    <div class="w-full h-[820px] flex flex-col items-center pt-32 px-4 gap-6 md:gap-8 bg-primary-color text-white"
         id="summary-text">
         <div class="flex flex-col">
-            <h1 class="text-center text-white font-bold break-words text-lg md:text-2xl">
+            <h1 class="text-center text-white font-bold font-montserrat break-words text-lg md:text-2xl">
                 {{.Summary.Greeting}}
             </h1>
-            <h1 class="text-center text-white font-bold break-words text-lg md:text-2xl">
+            <h1 class="text-center text-white font-bold font-montserrat break-words text-lg md:text-2xl">
                 {{.Summary.GreetingTwo}}
             </h1>
         </div>
-        <p class="text-sm w-full text-center leading-6 md:break-keep md:w-4/12 md:text-lg">
+        <p class="text-sm w-full text-center font-montserrat leading-6 md:break-keep md:w-4/12 md:text-lg">
             {{.Summary.ParagraphOne}}
             {{.Summary.ParagraphTwo}}
             {{.Summary.ParagraphThree}}
@@ -22,16 +22,11 @@
             class="flex flex-col min-w-96 p-4 gap-6 md:gap-8 items-center border-b-2 md:border-b-0 md:border-r-2 border-slate-100">
 
             <img src="/static/images/terminal.svg" class="w-16" />
-            <h1 class="text-blue-950 font-bold text-xl">{{.TechLead.Title}}</h1>
-            <span class="text-blue-950">{{.TechLead.Description}}</span>
+            <h1 class="text-secondary-color font-bold font-montserrat text-xl">{{.TechLead.Title}}</h1>
+            <span class="text-sub-title-color">{{.TechLead.Description}}</span>
 
-            <div class="flex flex-col gap-2">
-                <strong class="text-emerald-600">{{.TechLead.FirstSection}}:</strong>
-                <span>Jira, Miro, Figma, Slack</span>
-            </div>
-
-            <div class="flex flex-col gap-2">
-                <strong class="text-emerald-600">{{.TechLead.SecondSection}}:</strong>
+            <div class="flex flex-col gap-2 text-primary-color">
+                <strong class="text-button-text-color">{{.TechLead.SecondSection}}:</strong>
                 <span>{{.TechLead.SkillOne}}</span>
                 <span>{{.TechLead.SkillTwo}}</span>
                 <span>{{.TechLead.SkillThree}}</span>
@@ -43,11 +38,11 @@
         <div
             class="flex flex-col min-w-96 p-4 gap-6 md:gap-8 items-center border-b-2 md:border-b-0 md:border-r-2 border-slate-100">
             <img src="/static/images/gear.svg" class="w-16" />
-            <h1 class="text-blue-950 font-bold text-xl">{{.Backend.Title}}</h1>
-            <span class="text-blue-950">{{.Backend.Description}}</span>
+            <h1 class="text-secondary-color font-bold font-montserrat text-xl">{{.Backend.Title}}</h1>
+            <span class="text-sub-title-color">{{.Backend.Description}}</span>
 
             <div class="flex flex-col gap-4 items-center pb-2">
-                <strong class="text-emerald-600 pb-4">{{.Backend.FirstSection}}:</strong>
+                <strong class="text-button-text-color pb-4">{{.Backend.FirstSection}}:</strong>
 
                 <div class="flex gap-4 items-center">
                     <a href="https://go.dev/" target="_blank"
@@ -65,11 +60,16 @@
                         title="Python">
                         <img src="/static/images/python.svg" alt="python" class="w-8" />
                     </a>
+                      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"
+                        class="flex items-center rounded-full p-4 border-2 border-slate-200 bg-transparent transition delay-75 duration-300 ease-in-out hover:bg-slate-200"
+                        title="Python">
+                        <img src="/static/images/nodejs.svg" alt="nodejs" class="w-8" />
+                    </a>
                 </div>
             </div>
 
             <div class="flex flex-col gap-2 items-center">
-                <strong class="text-emerald-600 pb-2">{{.Backend.SecondSection}}:</strong>
+                <strong class="text-button-text-color pb-2">{{.Backend.SecondSection}}:</strong>
 
                 <div class="flex gap-4 items-center">
                     <a href="https://laravel.com/" target="_blank"
@@ -90,20 +90,20 @@
                     <a href="https://gin-gonic.com/" target="_blank"
                         class="flex items-center rounded-full p-4 border-2 border-slate-200 bg-transparent transition delay-75 duration-300 ease-in-out hover:bg-slate-200"
                         title="Gin Web Framework">
-                        <img src="/static/images/gin.png" alt="gin-gonic" class="w-10" />
+                        <img src="/static/images/gin.png" alt="gin-gonic" class="w-8" />
+                    </a>
+                     <a href="https://gin-gonic.com/" target="_blank"
+                        class="flex items-center rounded-full p-4 border-2 border-slate-200 bg-transparent transition delay-75 duration-300 ease-in-out hover:bg-slate-200"
+                        title="Fiber Framework">
+                        <img src="/static/images/fiber.png" alt="fiber" class="w-10" />
                     </a>
                 </div>
             </div>
 
             <div class="flex flex-col gap-2">
-                <strong class="text-emerald-600 pb-2">{{.Backend.ThirdSection}}:</strong>
+                <strong class="text-button-text-color pb-2">{{.Backend.ThirdSection}}:</strong>
 
-                <div class="grid grid-cols-4 gap-6">
-                    <a href="https://aws.amazon.com/" target="_blank"
-                        class="flex items-center rounded-full p-4 border-2 border-slate-200 bg-transparent transition delay-75 duration-300 ease-in-out hover:bg-slate-200"
-                        title="Amazon Web Services">
-                        <img src="/static/images/aws.svg" alt="aws" class="w-8" />
-                    </a>
+                <div class="grid grid-cols-4 gap-4">
                     <a href="https://www.docker.com/" target="_blank"
                         class="flex items-center rounded-full p-4 border-2 border-slate-200 bg-transparent transition delay-75 duration-300 ease-in-out hover:bg-slate-200">
                         <img src="/static/images/docker.svg" alt="docker" class="w-8" />
@@ -112,9 +112,29 @@
                         class="flex items-center rounded-full p-4 border-2 border-slate-200 bg-transparent transition delay-75 duration-300 ease-in-out hover:bg-slate-200">
                         <img src="/static/images/gitlab.svg" alt="gitlab" class="w-8" />
                     </a>
-                    <a href="https://www.postman.com/" target="_blank"
+                     <a href="https://www.mysql.com/" target="_blank"
                         class="flex items-center rounded-full p-4 border-2 border-slate-200 bg-transparent transition delay-75 duration-300 ease-in-out hover:bg-slate-200">
-                        <img src="/static/images/postman.svg" alt="postman" class="w-8" />
+                        <img src="/static/images/mysql.svg" alt="mysql" class="w-8" />
+                    </a>
+                    <a href="https://redis.io/" target="_blank"
+                        class="flex items-center rounded-full p-4 border-2 border-slate-200 bg-transparent transition delay-75 duration-300 ease-in-out hover:bg-slate-200">
+                        <img src="/static/images/redis.svg" alt="redis" class="w-8" />
+                    </a>
+                     <a href="https://docs.aws.amazon.com/dynamodb/" target="_blank"
+                        class="flex items-center rounded-full p-4 border-2 border-slate-200 bg-transparent transition delay-75 duration-300 ease-in-out hover:bg-slate-200">
+                        <img src="/static/images/dynamodb.svg" alt="dynamodb" class="w-8" />
+                    </a>
+                     <a href="https://docs.aws.amazon.com/lambda/" target="_blank"
+                        class="flex items-center rounded-full p-4 border-2 border-slate-200 bg-transparent transition delay-75 duration-300 ease-in-out hover:bg-slate-200">
+                        <img src="/static/images/lambda.svg" alt="lambda" class="w-8" />
+                    </a>
+                     <a href="https://docs.aws.amazon.com/sqs/" target="_blank"
+                        class="flex items-center rounded-full p-4 border-2 border-slate-200 bg-transparent transition delay-75 duration-300 ease-in-out hover:bg-slate-200">
+                        <img src="/static/images/sqs.svg" alt="sqs" class="w-8" />
+                    </a>
+                     <a href="https://docs.aws.amazon.com/ecs/" target="_blank"
+                        class="flex items-center rounded-full p-4 border-2 border-slate-200 bg-transparent transition delay-75 duration-300 ease-in-out hover:bg-slate-200">
+                        <img src="/static/images/ecs.svg" alt="ecs" class="w-8" />
                     </a>
                 </div>
             </div>
@@ -122,11 +142,11 @@
 
         <div class="flex flex-col min-w-96 p-4 gap-6 md:gap-8 items-center">
             <img src="/static/images/front-end.svg" class="w-16" />
-            <h1 class="text-blue-950 font-bold text-xl">{{.Frontend.Title}}</h1>
-            <span class="text-blue-950">{{.Frontend.Description}}</span>
+            <h1 class="text-secondary-color font-bold font-montserrat text-xl">{{.Frontend.Title}}</h1>
+            <span class="text-sub-title-color">{{.Frontend.Description}}</span>
 
             <div class="flex flex-col gap-4 items-center pb-2">
-                <strong class="text-emerald-600 pb-4">{{.Frontend.FirstSection}}:</strong>
+                <strong class="text-button-text-color pb-4">{{.Frontend.FirstSection}}:</strong>
 
                 <div class="flex gap-4 items-center">
                     <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank"
@@ -148,7 +168,7 @@
             </div>
 
             <div class="flex flex-col gap-3 items-center">
-                <strong class="text-emerald-600 pb-2">{{.Frontend.SecondSection}}:</strong>
+                <strong class="text-button-text-color pb-2">{{.Frontend.SecondSection}}:</strong>
 
                 <div class="flex gap-4 items-center">
                     <a href="https://react.dev/" target="_blank"
@@ -170,7 +190,7 @@
             </div>
 
             <div class="flex flex-col gap-2">
-                <strong class="text-emerald-600 pb-4">{{.Frontend.ThirdSection}}:</strong>
+                <strong class="text-button-text-color pb-4">{{.Frontend.ThirdSection}}:</strong>
 
                 <div class="flex gap-6">
                     <a href="https://htmx.org/" target="_blank"

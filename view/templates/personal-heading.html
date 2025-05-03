@@ -1,25 +1,27 @@
-<div class="py-16 flex flex-col items-center text-center">
+<div class="flex flex-col items-center text-center">
     <div
         id="summary-title"
-        class="flex flex-col gap-16 md:gap-8 text-slate-900"
+        class="flex flex-col gap-16 md:gap-8 text-title-color"
     >
-        <h1 class="text-3xl md:text-5xl font-bold">
-            <span>{{.Intro.Title}}</span>
+        <h1 class="text-3xl md:text-5xl font-bold font-montserrat px-2 md:px-0">
+            <span alt="title">{{.Intro.Title}}</span>
         </h1>
 
-        <p class="flex flex-col self-center text-lg md:text-xl text-black">
-            <span>{{.Intro.SubTitle}}</span>
-            <span>{{.Intro.SubTitleTwo}}</span>
+            <p class="flex flex-col self-center text-lg px-2 md:px-0 md:text-xl text-sub-title-color">
+            <span alt="sub-title">{{.Intro.SubTitle}}</span>
+            <span alt="sub-title-2">{{.Intro.SubTitleTwo}}</span>
         </p>
 
         <img
             src="/static/images/mateus.jpeg"
             class="self-center w-[150px] md:w-[210px] rounded-full"
+            alt="profile-picture"
         />
 
         <a
-            class="p-2 self-center text-center text-cyan-600 font-normal bg-transperent outline-none border-2 border-cyan-600 rounded-3xl w-7/12 hover:bg-cyan-600 hover:text-white transition delay-75 duration-300 ease-in-out"
-            href="/static/files/Mateus Werneck.pdf"
+            class="p-2 self-center text-center text-primary-color font-bold bg-transperent outline-none border-2 border-button-border-color rounded-3xl w-7/12 hover:bg-button-hover hover:text-white transition delay-75 duration-300 ease-in-out"
+            href="{{.Buttons.CvFileName}}"
+            alt="show-resume-button"
             download
         >
             {{.Buttons.DownloadCv}}
