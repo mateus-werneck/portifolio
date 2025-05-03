@@ -2,14 +2,14 @@
     <div class="w-full h-[820px] flex flex-col items-center pt-32 px-4 gap-6 md:gap-8 bg-primary-color text-white"
         id="summary-text">
         <div class="flex flex-col">
-            <h1 class="text-center text-white font-bold break-words text-lg md:text-2xl">
+            <h1 class="text-center text-white font-bold font-montserrat break-words text-lg md:text-2xl">
                 {{.Summary.Greeting}}
             </h1>
-            <h1 class="text-center text-white font-bold break-words text-lg md:text-2xl">
+            <h1 class="text-center text-white font-bold font-montserrat break-words text-lg md:text-2xl">
                 {{.Summary.GreetingTwo}}
             </h1>
         </div>
-        <p class="text-sm w-full text-center leading-6 md:break-keep md:w-4/12 md:text-lg">
+        <p class="text-sm w-full text-center font-montserrat leading-6 md:break-keep md:w-4/12 md:text-lg">
             {{.Summary.ParagraphOne}}
             {{.Summary.ParagraphTwo}}
             {{.Summary.ParagraphThree}}
@@ -22,7 +22,7 @@
             class="flex flex-col min-w-96 p-4 gap-6 md:gap-8 items-center border-b-2 md:border-b-0 md:border-r-2 border-slate-100">
 
             <img src="/static/images/terminal.svg" class="w-16" />
-            <h1 class="text-secondary-color font-bold text-xl">{{.TechLead.Title}}</h1>
+            <h1 class="text-secondary-color font-bold font-montserrat text-xl">{{.TechLead.Title}}</h1>
             <span class="text-sub-title-color">{{.TechLead.Description}}</span>
 
             <div class="flex flex-col gap-2 text-primary-color">
@@ -38,7 +38,7 @@
         <div
             class="flex flex-col min-w-96 p-4 gap-6 md:gap-8 items-center border-b-2 md:border-b-0 md:border-r-2 border-slate-100">
             <img src="/static/images/gear.svg" class="w-16" />
-            <h1 class="text-secondary-color font-bold text-xl">{{.Backend.Title}}</h1>
+            <h1 class="text-secondary-color font-bold font-montserrat text-xl">{{.Backend.Title}}</h1>
             <span class="text-sub-title-color">{{.Backend.Description}}</span>
 
             <div class="flex flex-col gap-4 items-center pb-2">
@@ -142,7 +142,7 @@
 
         <div class="flex flex-col min-w-96 p-4 gap-6 md:gap-8 items-center">
             <img src="/static/images/front-end.svg" class="w-16" />
-            <h1 class="text-secondary-color font-bold text-xl">{{.Frontend.Title}}</h1>
+            <h1 class="text-secondary-color font-bold font-montserrat text-xl">{{.Frontend.Title}}</h1>
             <span class="text-sub-title-color">{{.Frontend.Description}}</span>
 
             <div class="flex flex-col gap-4 items-center pb-2">
