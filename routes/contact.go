@@ -8,6 +8,7 @@ import (
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
+	"github.com/mateus-werneck/portifolio/app/builders"
 	"github.com/mateus-werneck/portifolio/app/tools"
 	"github.com/mateus-werneck/portifolio/app/types"
 	"github.com/nicksnyder/go-i18n/v2/i18n"
@@ -20,6 +21,9 @@ func contact(server *gin.Engine) {
 		c.HTML(http.StatusOK, "contact.html", gin.H{
 			"FormTitle":       localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Contact.Title"}),
 			"FormDescription": localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Contact.Desc"}),
+        	"Buttons": builders.HomePageButtons{
+				Submit: localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.Submit"}),
+			},
 			"ContactFields": map[string]string{
 				"Name":    localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "ContactFields.Name"}),
 				"Email":   localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "ContactFields.Email"}),

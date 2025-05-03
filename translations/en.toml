@@ -74,6 +74,7 @@ CvFileName = "/static/files/Mateus Werneck.pdf"
 LearnMore = "Learn More"
 Visit = "Visit Website"
 Proposal = "Make an offer"
+Submit = "Send message"
 
 [Errors]
 EmailLimit = "You've reached your email quota for today."

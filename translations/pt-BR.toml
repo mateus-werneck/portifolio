@@ -76,6 +76,7 @@ LearnMore = "Ver mais"
 Visit = "Visitar site"
 Proposal = "Iniciar uma proposta"
 BackButton = "x"
+Submit = "Enviar mensagem"
 
 [Errors]
 EmailLimit = "Limite de emails por dia excedido."

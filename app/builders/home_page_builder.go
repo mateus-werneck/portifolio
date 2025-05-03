@@ -26,6 +26,7 @@ type HomePageButtons struct {
 	LearnMore  string
 	Visit      string
 	Proposal   string
+	Submit     string
 }
 
 type UserLanguage struct {
@@ -188,6 +189,7 @@ func (b *HomePageBuilder) Build() interface{} {
 	data.Buttons.LearnMore = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.LearnMore"})
 	data.Buttons.Visit = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.Visit"})
 	data.Buttons.Proposal = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.Proposal"})
+	data.Buttons.Submit = b.Localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.Submit"})
 
 	return data
 }

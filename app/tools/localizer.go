@@ -27,7 +27,7 @@ func SetEnTransalator() {
 	pt := pt.New()
 	en := en.New()
 
-	uni := ut.New(pt, pt, en)
+	uni := ut.New(en, en, pt)
 	trans, _ := uni.GetTranslator("en_US")
 
 	if v, ok := binding.Validator.Engine().(*validator.Validate); ok {
