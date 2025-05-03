@@ -9,7 +9,8 @@ export default {
         4: "4 4 0%",
       },
       fontFamily: {
-        sans: ["Montserrat", "Roboto"],
+        sans: ["'JetBrains Mono'", "Montserrat"],
+        montserrat: ["Montserrat"],
         inter: ["Inter", "sans-serif"],
         sourcesans: ["'Source Sans 3'", "Inter"],
         jetbrains: ["'JetBrains Mono'", "Inter"],
@@ -24,6 +25,7 @@ export default {
          "button-border-color": "#897B30"
      },
     backgroundColor: {
+        "default": "#f1eada",
         "primary-color": "#2f4f4f",
         "button-hover": "#A1452D"
     },

@@ -154,7 +154,7 @@ html,
   -o-tab-size: 4;
      tab-size: 4;
   /* 3 */
-  font-family: Montserrat, Roboto;
+  font-family: 'JetBrains Mono', Montserrat;
   /* 4 */
   font-feature-settings: normal;
   /* 5 */
@@ -566,10 +566,6 @@ video {
   margin-top: -14rem;
 }
 
-.mb-4 {
-  margin-bottom: 1rem;
-}
-
 .flex {
   display: flex;
 }
@@ -598,28 +594,12 @@ video {
   height: 10px;
 }
 
-.h-\[684px\] {
-  height: 684px;
+.h-\[820px\] {
+  height: 820px;
 }
 
 .h-full {
   height: 100%;
-}
-
-.h-\[720px\] {
-  height: 720px;
-}
-
-.h-\[960px\] {
-  height: 960px;
-}
-
-.h-\[800px\] {
-  height: 800px;
-}
-
-.h-\[820px\] {
-  height: 820px;
 }
 
 .min-h-8 {
@@ -818,9 +798,19 @@ video {
   border-color: rgb(148 163 184 / var(--tw-border-opacity, 1));
 }
 
+.bg-default {
+  --tw-bg-opacity: 1;
+  background-color: rgb(241 234 218 / var(--tw-bg-opacity, 1));
+}
+
 .bg-primary-color {
   --tw-bg-opacity: 1;
   background-color: rgb(47 79 79 / var(--tw-bg-opacity, 1));
+}
+
+.bg-purple-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(233 213 255 / var(--tw-bg-opacity, 1));
 }
 
 .bg-red-400 {
@@ -939,6 +929,10 @@ video {
 
 .indent-2 {
   text-indent: 0.5rem;
+}
+
+.font-montserrat {
+  font-family: Montserrat;
 }
 
 .text-2xl {
@@ -1186,10 +1180,6 @@ video {
     height: 24rem;
   }
 
-  .md\:h-\[684px\] {
-    height: 684px;
-  }
-
   .md\:w-4\/12 {
     width: 33.333333%;
   }
@@ -1271,17 +1261,5 @@ video {
   .md\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .lg\:h-\[684px\] {
-    height: 684px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .xl\:h-\[684px\] {
-    height: 684px;
   }
 }
