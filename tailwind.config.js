@@ -9,9 +9,11 @@ export default {
         4: "4 4 0%",
       },
       fontFamily: {
+        sans: ["Montserrat", "Roboto"],
         inter: ["Inter", "sans-serif"],
         sourcesans: ["'Source Sans 3'", "Inter"],
         jetbrains: ["'JetBrains Mono'", "Inter"],
+        lumios: ["'Lumios Typewriter New'", "Inter"] 
       },
      colors: {
          "primary-color": "#2f4f4f",
