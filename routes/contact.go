@@ -3,12 +3,15 @@ package routes
 import (
 	"net/http"
 	"os"
+	"regexp"
+	"slices"
 	"strconv"
 
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
 	"github.com/mateus-werneck/portifolio/app/builders"
+	"github.com/mateus-werneck/portifolio/app/data"
 	"github.com/mateus-werneck/portifolio/app/tools"
 	"github.com/mateus-werneck/portifolio/app/types"
 	"github.com/nicksnyder/go-i18n/v2/i18n"
@@ -21,7 +24,7 @@ func contact(server *gin.Engine) {
 		c.HTML(http.StatusOK, "contact.html", gin.H{
 			"FormTitle":       localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Contact.Title"}),
 			"FormDescription": localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Contact.Desc"}),
-        	"Buttons": builders.HomePageButtons{
+			"Buttons": builders.HomePageButtons{
 				Submit: localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.Submit"}),
 			},
 			"ContactFields": map[string]string{
@@ -84,11 +87,29 @@ func contact(server *gin.Engine) {
 			return
 		}
 
+		if slices.Contains(data.EmailBlocklist, formData.Email) {
+			session.Set(formData.Email, qtdEmails+1)
+			session.Save()
+
+			c.HTML(http.StatusOK, "contact-form.html", gin.H{})
+
+			return
+		}
+
+		if ok, _ := regexp.MatchString("URGENT|CLAIM|IMPORTANT", formData.Email); ok {
+			session.Set(formData.Email, qtdEmails+1)
+			session.Save()
+
+			c.HTML(http.StatusOK, "contact-form.html", gin.H{})
+
+			return
+		}
+
 		email := mail.NewMessage()
 		email.SetHeader("From", formData.Email)
 		email.SetHeader("To", "werneck.mateus@gmail.com", "werneck.mateus@protonmail.com")
 		email.SetHeader("Subject", "Me interessei no seu perfil - Mateus Werneck")
-		email.SetBody("text/plain", formData.Message)
+		email.SetBody("text/plain", formData.Name+":"+formData.Message)
 
 		port, _ := strconv.Atoi(os.Getenv("SMTP_PORT"))
 		d := mail.NewDialer(os.Getenv("SMTP_HOST"), port, os.Getenv("SMTP_USER"), os.Getenv("SMTP_PASS"))

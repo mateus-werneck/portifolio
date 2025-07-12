@@ -7,6 +7,8 @@ services:
       context: .
     container_name: portifolio
     restart: always
+    mem_limit: 128m
+    cpus: 0.5
     ports:
       - 2053:2053
     depends_on:
@@ -16,6 +18,8 @@ services:
   portdb:
     image: redis:6.2-alpine
     container_name: portdb
+    mem_limit: 128m
+    cpus: 0.5
     restart: always
     ports:
       - 6378:6379
