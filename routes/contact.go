@@ -39,7 +39,7 @@ func contact(server *gin.Engine) {
 		var validationErrors validator.ValidationErrors
 		var formData types.ContactEmail
 
-		localizer := c.MustGet("localizer").(*i18n.Localizer)
+		localizer := c.MustGet("localizer").(*i18n.Localizer) 
 
 		err := c.ShouldBind(&formData)
 		if err != nil {
@@ -63,6 +63,10 @@ func contact(server *gin.Engine) {
 			"Name":          formData.Name,
 			"Sender":        formData.Email,
 			"Body":          formData.Message,
+            "Buttons": builders.HomePageButtons{
+				Submit: localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.Submit"}),
+		    },
+
 		}
 
 		if len(validationErrors) > 0 {
@@ -91,16 +95,18 @@ func contact(server *gin.Engine) {
 			session.Set(formData.Email, qtdEmails+1)
 			session.Save()
 
-			c.HTML(http.StatusOK, "contact-form.html", gin.H{})
+			c.HTML(http.StatusOK, "contact-form.html", response)
 
 			return
 		}
 
-		if ok, _ := regexp.MatchString("URGENT|CLAIM|IMPORTANT", formData.Email); ok {
+		ok, _ := regexp.MatchString("URGENT|CLAIM|IMPORTANT", formData.Message)
+
+        if ok {
 			session.Set(formData.Email, qtdEmails+1)
 			session.Save()
 
-			c.HTML(http.StatusOK, "contact-form.html", gin.H{})
+			c.HTML(http.StatusOK, "contact-form.html", response)
 
 			return
 		}
@@ -109,7 +115,7 @@ func contact(server *gin.Engine) {
 		email.SetHeader("From", formData.Email)
 		email.SetHeader("To", "werneck.mateus@gmail.com", "werneck.mateus@protonmail.com")
 		email.SetHeader("Subject", "Me interessei no seu perfil - Mateus Werneck")
-		email.SetBody("text/plain", formData.Name+":"+formData.Message)
+		email.SetBody("text/plain", formData.Email+": "+formData.Message)
 
 		port, _ := strconv.Atoi(os.Getenv("SMTP_PORT"))
 		d := mail.NewDialer(os.Getenv("SMTP_HOST"), port, os.Getenv("SMTP_USER"), os.Getenv("SMTP_PASS"))
@@ -128,6 +134,10 @@ func contact(server *gin.Engine) {
 		session.Set(formData.Email, qtdEmails+1)
 		session.Save()
 
-		c.HTML(http.StatusOK, "contact-form.html", gin.H{})
+		c.HTML(http.StatusOK, "contact-form.html", gin.H{
+         "Buttons": builders.HomePageButtons{
+				Submit: localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.Submit"}),
+		    },
+        })
 	})
 }
