@@ -11,4 +11,5 @@ var EmailBlocklist = []string{
 	"morrisray8786@gmail.com",
 	"greghatesbeets@yahoo.com",
 	"scotchdoc@btinternet.com",
+	"loulougtr@gmail.com",
 }

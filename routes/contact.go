@@ -39,7 +39,7 @@ func contact(server *gin.Engine) {
 		var validationErrors validator.ValidationErrors
 		var formData types.ContactEmail
 
-		localizer := c.MustGet("localizer").(*i18n.Localizer) 
+		localizer := c.MustGet("localizer").(*i18n.Localizer)
 
 		err := c.ShouldBind(&formData)
 		if err != nil {
@@ -63,10 +63,9 @@ func contact(server *gin.Engine) {
 			"Name":          formData.Name,
 			"Sender":        formData.Email,
 			"Body":          formData.Message,
-            "Buttons": builders.HomePageButtons{
+			"Buttons": builders.HomePageButtons{
 				Submit: localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.Submit"}),
-		    },
-
+			},
 		}
 
 		if len(validationErrors) > 0 {
@@ -100,9 +99,9 @@ func contact(server *gin.Engine) {
 			return
 		}
 
-		ok, _ := regexp.MatchString("URGENT|CLAIM|IMPORTANT", formData.Message)
+		ok, _ := regexp.MatchString("URGENT|CLAIM|IMPORTANT|withdraw|WITHDRAW|MONEY|money", formData.Message)
 
-        if ok {
+		if ok {
 			session.Set(formData.Email, qtdEmails+1)
 			session.Save()
 
@@ -135,9 +134,9 @@ func contact(server *gin.Engine) {
 		session.Save()
 
 		c.HTML(http.StatusOK, "contact-form.html", gin.H{
-         "Buttons": builders.HomePageButtons{
+			"Buttons": builders.HomePageButtons{
 				Submit: localizer.MustLocalize(&i18n.LocalizeConfig{MessageID: "Buttons.Submit"}),
-		    },
-        })
+			},
+		})
 	})
 }
